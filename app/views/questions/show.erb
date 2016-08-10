@@ -1,11 +1,15 @@
+<%= erb :'partials/vote_form', locals: { object_id: @question.id, votable_type: "Question", question_id: @question.id} %>
 <section>
   <h2><%=@question.title%></h2>
     <p><%=@question.content%></p>
     <p>Asked by: <%=@question.user.username%></p>
+    <p>Points: <%=@question.votes.pluck("point_value").sum %></p>
 </section><br><br>
 <section>
   <h3>Answers</h3>
     <% @question.answers.each do |answer| %>
+    <%= erb :'partials/vote_form', locals: { object_id: answer.id, votable_type: "Answer", question_id: @question.id } %>
+    <%= answer.votes.pluck("point_value").sum %>
     <p><%= answer.content%></p>
     <%= answer.user.username%>
     <% end %><br>

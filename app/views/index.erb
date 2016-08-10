@@ -1,7 +1,7 @@
 <div class="container">
-  <h1>Welcome to Panda Flow <%= current_user.username %>!</h1>
+  <h1>Welcome to Panda Flow <%= current_username %>!</h1>
   <% @questions.each do |question| %>
-  <a href="/questions/<%=question.id%>"><%= question.title %></a>
+  <a href="/questions/<%=question.id%>"><%= question.votes.pluck("point_value").sum %> <%= question.title %></a>
   <% end %>
 </div>
 
