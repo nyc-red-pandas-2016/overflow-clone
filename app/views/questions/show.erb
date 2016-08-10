@@ -4,15 +4,32 @@
     <p><%=@question.content%></p>
     <p>Asked by: <%=@question.user.username%></p>
     <p>Points: <%=@question.votes.pluck("point_value").sum %></p>
+    <a href="/questions/<%= @question.id %>/comments/new">Add Comment</a>
 </section><br><br>
 <section>
   <h3>Answers</h3>
     <% @question.answers.each do |answer| %>
-    <%= erb :'partials/vote_form', locals: { object_id: answer.id, votable_type: "Answer", question_id: @question.id } %>
-    <%= answer.votes.pluck("point_value").sum %>
-    <p><%= answer.content%></p>
-    <%= answer.user.username%>
-    <% end %><br>
+      <%= erb :'partials/vote_form', locals: { object_id: answer.id, votable_type: "Answer", question_id: @question.id } %>
+      <%= answer.votes.pluck("point_value").sum %>
+      <p><%= answer.content%></p>
+      <p>Answered By: <%= answer.user.username%></p><br>
+      <a href="/questions/<%= @question.id %>/answers/<%= answer.id%>/comments/new">Add Comment</a>
+    <% end %>
 </section>
+
+<ul>
+  <% if @errors %>
+    <% @errors.each do |error| %>
+      <li><%=error%></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<form method="POST" action="/questions/<%= @question.id%>/answers">
+  <textarea rows="5" cols="20" class="text" name="answer[content]"></textarea>
+  <input type="hidden" name="answer[user_id]" value="<%=current_user.id%>">
+  <input type="hidden" name="answer[question_id]" value="<%= @question.id%>">
+  <input type="submit" value="Post Answer">
+</form>
 
 
