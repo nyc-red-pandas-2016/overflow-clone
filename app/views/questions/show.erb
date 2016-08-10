@@ -1,0 +1,14 @@
+<section>
+  <h2><%=@question.title%></h2>
+    <p><%=@question.content%></p>
+    <p>Asked by: <%=@question.user.username%></p>
+</section><br><br>
+<section>
+  <h3>Answers</h3>
+    <% @question.answers.each do |answer| %>
+    <p><%= answer.content%></p>
+    <%= answer.user.username%>
+    <% end %><br>
+</section>
+
+
