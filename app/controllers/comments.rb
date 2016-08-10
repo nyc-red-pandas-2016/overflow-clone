@@ -11,7 +11,6 @@ end
 
 post '/comments' do
 
-
   redirect '/' unless logged_in?
   @comment = Comment.new(params[:comment])
   if @comment.save
