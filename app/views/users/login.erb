@@ -1,0 +1,21 @@
+<% @username = nil unless @username %>
+
+<div class="container">
+  <h1>Login:</h1>
+  <form action="/users" method="post">
+    <input type="hidden" name="_method" value="put">
+    <label for="username">Username:</label>
+    <input type="text" name="username" placeholder="username" value="<%= @username %>">
+    <label for="password">Password:</label>
+    <input type="password" name="password" placeholder="password">
+    <input type="submit" value="Login">
+  </form>
+
+  <% if @errors %>
+    <ul>
+      <% @errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
