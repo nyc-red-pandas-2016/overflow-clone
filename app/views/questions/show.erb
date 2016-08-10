@@ -1,51 +1,58 @@
-<%= erb :'partials/vote_form', locals: { object_id: @question.id, votable_type: "Question", question_id: @question.id} %>
-<section>
-  <h2><%=@question.title%></h2>
-    <p><%=@question.content%></p>
-    <p>Asked by: <%=@question.user.username%></p>
-    <p>Points: <%=@question.votes.pluck("point_value").sum %></p>
-    <a href="/questions/<%= @question.id %>/comments/new">Add Comment</a>
-    <section>
-      <h4>Comments</h4>
-      <% @question.comments.each do |comment| %>
-      <%= erb :'partials/vote_form', locals: { object_id: comment.id, votable_type: "Comment", question_id: @question.id} %>
-        <p><%= comment.content %></p>
-        <p>Written by: <%= comment.user.username %></p>
-      <% end %>
-    </section>
-</section><br><br>
-<section>
-  <h3>Answers</h3>
-    <% @question.answers.each do |answer| %>
-      <%= erb :'partials/vote_form', locals: { object_id: answer.id, votable_type: "Answer", question_id: @question.id } %>
-      <%= answer.votes.pluck("point_value").sum %>
-      <p><%= answer.content%></p>
-      <p>Answered By: <%= answer.user.username%></p><br>
-      <a href="/questions/<%= @question.id %>/answers/<%= answer.id%>/comments/new">Add Comment</a>
-      <section>
-      <h4>Comments</h4>
-      <% answer.comments.each do |comment| %>
-      <%= erb :'partials/vote_form', locals: { object_id: comment.id, votable_type: "Comment", question_id: @question.id} %>
-        <p><%= comment.content %></p>
-        <p>Written by: <%= comment.user.username %></p>
-      <% end %>
-    </section>
-    <% end %>
-</section>
+<div class="container">
+  <%= erb :'partials/vote_form', locals: { object_id: @question.id, votable_type: "Question", question_id: @question.id } %>
+  <section class="question-display">
+    <h2 id="question-header"><%=@question.title%></h2>
+      <p><%=@question.content%></p>
+      <p>Asked by: <%=@question.user.username%></p>
+      <p>Points: <%=@question.votes.pluck("point_value").sum %></p>
+      <a href="/questions/<%= @question.id %>/comments/new">Add Comment</a>
+      <section class="comment-container">
+        <% if @question.comments.length > 0 %>
+          <h4>Comments</h4>
+        <% end %>
+        <% @question.comments.each do |comment| %>
+        <%= erb :'partials/vote_form', locals: { object_id: comment.id, votable_type: "Comment", question_id: @question.id } %>
+          <p><%= comment.content %></p>
+          <p>Written by: <%= comment.user.username %></p>
+        <% end %>
+      </section>
+  </section><br><br>
 
-<ul>
-  <% if @errors %>
-    <% @errors.each do |error| %>
-      <li><%=error%></li>
-    <% end %>
-  <% end %>
-</ul>
+  <section class="answer-display">
+    <h3 id="answer-header">Answers</h3>
+      <% @question.answers.each do |answer| %>
+        <%= erb :'partials/vote_form', locals: { object_id: answer.id, votable_type: "Answer", question_id: @question.id } %>
+        <%= answer.votes.pluck("point_value").sum %>
+        <p><%= answer.content%></p>
+        <p>Answered By: <%= answer.user.username%></p><br>
+        <a href="/questions/<%= @question.id %>/answers/<%= answer.id%>/comments/new">Add Comment</a>
+        <section class="comment-container">
+          <% if answer.comments.length > 0 %>
+            <h4>Comments</h4>
+          <% end %>
+          <% answer.comments.each do |comment| %>
+          <%= erb :'partials/vote_form', locals: { object_id: comment.id, votable_type: "Comment", question_id: @question.id } %>
+            <p><%= comment.content %></p>
+            <p>Written by: <%= comment.user.username %></p>
+          <% end %>
+        </section>
+      <% end %>
+  </section>
 
-<form method="POST" action="/questions/<%= @question.id%>/answers">
-  <textarea rows="5" cols="20" class="text" name="answer[content]"></textarea>
-  <input type="hidden" name="answer[user_id]" value="<%=current_user.id%>">
-  <input type="hidden" name="answer[question_id]" value="<%= @question.id%>">
-  <input type="submit" value="Post Answer">
-</form>
+  <ul>
+    <% if @errors %>
+      <% @errors.each do |error| %>
+        <li><%=error%></li>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <form method="POST" action="/questions/<%= @question.id%>/answers" id="answer-question-form">
+    <textarea rows="5" cols="40" class="text" name="answer[content]"></textarea>
+    <input type="hidden" name="answer[user_id]" value="<%=current_user.id%>">
+    <input type="hidden" name="answer[question_id]" value="<%= @question.id%>">
+    <input type="submit" value="Post Answer">
+  </form>
+</div>
 
 

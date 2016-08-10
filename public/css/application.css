@@ -11,3 +11,34 @@ th {
 * {
   margin-left: 20px;
 }
+
+.comment-container {
+  font-size: .75em;
+  padding-left: 40px;
+  margin-top: 10px;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  margin-bottom: 10px;
+}
+
+#answer-header {
+  border-bottom: 1px solid gray;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+#question-header {
+  font-size: 2em;
+  text-align: center;
+}
+
+#answer-question-form input, textarea {
+  display: block;
+  margin: 5px auto;
+  text-align: center;
+}
+
+#login-form input, label, #register-form input, label {
+  display: block;
+  margin: 0px 0px 5px 40px;
+}
