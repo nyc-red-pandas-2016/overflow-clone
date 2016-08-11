@@ -1,0 +1,35 @@
+<div class="container">
+  <h1><%= @user_to_view.username %></h1>
+  <section>
+    <h3>Questions That <%= @user_to_view.username %> Has Asked</h3>
+    <ul>
+      <% @user_to_view.questions.each do |question| %>
+        <li><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
+      <% end %>
+    </ul>
+  </section>
+  <section>
+    <h3>Questions That <%= @user_to_view.username %> Has Answered</h3>
+    <ul>
+      <% questions_answered = @user_to_view.answers.map { |answer| answer.question } %>
+      <% questions_answered.uniq.each do |question| %>
+        <li><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
+      <% end %>
+    </ul>
+  </section>
+  <section>
+    <h3>Questions Where <%= @user_to_view.username %> Has Contributed Comments</h3>
+    <ul>
+      <% questions_commented = @user_to_view.comments.map do |comment|
+        if comment.commentable_type == "Question"
+          Question.find_by(id: comment.commentable_id)
+        else
+          Answer.find_by(id: comment.commentable_id).question
+        end
+      end %>
+      <% questions_commented.uniq.each do |question| %>
+        <li><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
+      <% end %>
+    </ul>
+  </section>
+</div>
