@@ -4,13 +4,22 @@ get '/comments/:id/edit' do
 end
 get '/questions/:id/comments/new' do
   @question = Question.find(params[:id])
-  erb :'/comments/new'
+  if request.xhr?
+    # binding.pry
+    erb :'/comments/new', layout: false
+  else
+    erb :'/comments/new'
+  end
 end
 
 get '/questions/:id/answers/:answer_id/comments/new' do
   redirect '/' unless logged_in?
   @answer = Answer.find(params[:answer_id])
-  erb :'/comments/new'
+  if request.xhr?
+    erb :'/comments/new', layout: false
+  else
+    erb :'/comments/new'
+  end
 end
 
 post '/comments' do
@@ -19,7 +28,7 @@ post '/comments' do
   @comment = Comment.new(params[:comment])
   if @comment.save
     if request.xhr?
-      #ajax
+      erb :'/partials/_new_comment', layout: false, locals: {comment: @comment}
     else
       if params[:comment][:commentable_type] == "Answer"
         @question_id = Answer.find(params[:comment][:commentable_id]).question.id
@@ -49,10 +58,10 @@ delete '/comments/:id' do
   @comment = Comment.find(params[:id])
   @comment.destroy
   if @comment.commentable_type == "Question"
-      redirect "/questions/#{@comment.commentable_id}"
+      redirect "/questions/#{@comment.commentable_id}" unless request.xhr?
   else @comment.commentable_type == "Answer"
       answer = Answer.find(@comment.commentable_id)
-      redirect "/questions/#{answer.question_id}"
+      redirect "/questions/#{answer.question_id}" unless request.xhr?
   end
 end
 

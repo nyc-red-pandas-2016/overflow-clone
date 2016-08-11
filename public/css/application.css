@@ -82,6 +82,7 @@ nav{
   padding: 5px 5px 5px 5px;
 }
 
+
 /* New Comment Page Layout */
 .new_comment{
   margin: 10% auto;
@@ -91,6 +92,7 @@ nav{
 
 .new_comment form {
     padding: 20px 20px 20px 20px;
+
 }
 
 .new_comment textarea {
@@ -102,6 +104,7 @@ nav{
 .new_comment label {
   padding: 5px 5px;
 }
+
 
 .new_comment input[type="submit"] {
   margin-top: 15px;

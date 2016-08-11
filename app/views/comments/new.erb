@@ -7,7 +7,7 @@
   <% commentable_type = "Answer" %>
 <% end %>
 
-<form method="POST" action="/comments">
+<form class="comment_form" method="POST" action="/comments">
   <label for="comment">Comment: </label>
   <textarea name="comment[content]"></textarea>
   <input type="hidden" name="comment[commentable_id]" value="<%= commentable_id %>">

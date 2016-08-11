@@ -1,0 +1,1 @@
+<li class="question"><a href="/questions/<%=question.id%>"><%= question.title %></a> <%= question.votes.pluck("point_value").sum %></li>
