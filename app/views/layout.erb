@@ -18,14 +18,20 @@
   <title></title>
 </head>
 <body>
-    <a href="/">Home</a>
-    <% if logged_in? %>
-    <a href="/users/logout"> Logout </a>
-    <a href="/users/<%= current_user_id %>"><%= current_username %></a>
-    <% else %>
-    <a href="/users/new"> Register </a>
-    <a href="/users/login"> Login </a>
-    <% end %>
+  <div class="navigation">
+    <nav>
+      <ul>
+      <li><a href="/">Home</a></li>
+      <% if logged_in? %>
+      <li><a href="/users/logout"> Logout </a></li>
+      <li><a href="/users/<%= current_user_id %>"><%= current_username %></a></li>
+      <% else %>
+      <li><a href="/users/new"> Register </a></li>
+      <li><a href="/users/login"> Login </a></li>
+      <% end %>
+      </ul>
+    </nav>
+  </div>
   <%= yield %>
 </body>
 </html>
