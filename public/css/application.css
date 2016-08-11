@@ -124,6 +124,7 @@ nav{
     width: 100%;
     margin-top: 15px;
 }
+
 .edit_comment label {
   padding: 5px 5px;
 }
@@ -157,4 +158,33 @@ section#display{
 
 #votes input[value="1"] {
 
+}
+
+/*Profile Page*/
+
+#profile-header {
+  margin-top: 5% auto;
+}
+
+#profile-header span{
+
+}
+
+#profile-header h1{
+  display: inline;
+  width: 70%;
+  margin-top: 50px;
+  float: right;
+}
+
+#profile-header p{
+  display: inline;
+  position: absolute;
+  margin-top: 8%;
+  margin-left: 9.5%;
+}
+
+#profile-header img{
+  display: inline-block;
+  width:20%;
 }
