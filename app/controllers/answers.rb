@@ -29,3 +29,11 @@ put '/answers/:id' do
   @answer.update(params[:answer])
   redirect "/questions/#{@answer.question_id}"
 end
+
+put '/answer/:id/best' do
+  answer = Answer.find(params[:id])
+  previous_best = answer.question.answers.find_by(best_answer: true)
+  previous_best.update(best_answer: false) if previous_best
+  answer.update(best_answer: true)
+  redirect "/questions/#{answer.question_id}"
+end

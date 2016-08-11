@@ -36,7 +36,20 @@
 
   <section class="answer-display">
     <h3 id="answer-header">Answers</h3>
-      <% @question.answers.each do |answer| %>
+      <% best_answer = @question.answers.find_by(best_answer: true) %>
+      <% other_answers = @question.answers.where(best_answer: false).sort_by { |answer| -answer.votes.pluck("point_value").sum } %>
+      <% best_answer ? answer_array = [best_answer] : answer_array = [] %>
+      <% answer_array += other_answers %>
+      <% answer_array.each do |answer| %>
+      <% if current_user == @question.user && answer.best_answer == false %>
+        <form action="/answer/<%= answer.id %>/best" method="post">
+            <input type="hidden" name="_method" value="put">
+            <input type="submit" value="Declare Best Answer">
+        </form>
+      <% end %>
+      <% if answer.best_answer == true %>
+        <p>This answer is the best!</p>
+      <% end %>
         <%= erb :'partials/vote_form', locals: { object_id: answer.id, votable_type: "Answer", question_id: @question.id } %>
         <%= answer.votes.pluck("point_value").sum %>
         <p><%= answer.content%></p>
