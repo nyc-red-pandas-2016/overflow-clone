@@ -3,7 +3,7 @@
 <p><%= comment.content %></p>
 <p>Written by: <a href="/users/<%= comment.user_id %>"><%= comment.user.username %></a></p>
 <% if current_user && current_user.id == comment.user_id %>
-<form class="comment_form" method="POST" action="/comments/<%=comment.id %>">
+<form class="delete" method="POST" action="/comments/<%=comment.id %>">
 <input type="hidden" name="_method" value="delete">
 <input type="submit" value="delete">
 </form>

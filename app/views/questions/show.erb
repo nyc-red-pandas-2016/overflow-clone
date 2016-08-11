@@ -1,4 +1,4 @@
-<div class="container">
+<div class="question_page_container">
 
   <!-- <section id="question-display"> -->
 
@@ -15,6 +15,7 @@
       <%= erb :'partials/_new_answer', locals: { question: @question, answer: answer } %>
 
       <% end %>
+    </section>
   <ul>
     <% if @errors %>
       <% @errors.each do |error| %>
