@@ -2,7 +2,7 @@
 
 <div class="container">
   <h1>Register New User</h1>
-  <form action="/users" method="post">
+  <form action="/users" method="post" id="register-form">
     <label for="user[username]">Username:</label>
     <input type="text" name="user[username]" placeholder="username" value="<%= @user.username %>">
     <label for="user[email]">Email:</label>

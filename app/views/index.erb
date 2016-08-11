@@ -5,6 +5,5 @@
     <li><a href="/questions/<%=question.id%>"><%= question.votes.pluck("point_value").sum %> <%= question.title %></a></li>
     <% end %>
   </ul>
+  <a href="/questions/new">Ask a Question</a>
 </div>
-
-<a href="/questions/new">Ask a Question</a>
