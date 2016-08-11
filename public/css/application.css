@@ -93,7 +93,8 @@ nav{
     padding: 20px 20px 20px 20px;
 }
 
-.new_comment input[type="text"] {
+.new_comment textarea {
+    max-width: 100%;
     height: 200px;
     width: 100%;
     margin-top: 15px;
@@ -103,5 +104,57 @@ nav{
 }
 
 .new_comment input[type="submit"] {
+  margin-top: 15px;
+}
+
+/* Edit Comment Page Layout */
+.edit_comment{
+  margin: 10% auto;
+  width: 600px;
+  padding: 20px 20px 20px 20px;
+}
+
+.edit_comment form {
+    padding: 20px 20px 20px 20px;
+}
+
+.edit_comment textarea {
+    max-width: 100%;
+    height: 200px;
+    width: 100%;
     margin-top: 15px;
+}
+.edit_comment label {
+  padding: 5px 5px;
+}
+
+.edit_comment input[type="submit"] {
+  margin-top: 15px;
+}
+
+/*Question Page Layout*/
+section#question_display {
+    padding: 20px 20px;
+}
+
+section#comment_question {
+    padding: 20px 20px;
+    float: right;
+}
+
+section#question {
+    padding: 20px 20px;
+}
+
+section#display{
+   padding-left: 10%;
+}
+#votes{
+  float: left;
+  margin-top: 2em;
+  margin-left: 2em;
+}
+
+#votes input[value="1"] {
+
 }

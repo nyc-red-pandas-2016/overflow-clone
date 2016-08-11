@@ -1,22 +1,27 @@
 <div class="container">
 
-  <section class="question-display">
-    <h2 id="question-header"><%=@question.title%></h2>
-      <p><%= erb :'partials/vote_form', locals: { object_id: @question.id, votable_type: "Question", question_id: @question.id } %></p>
-      <p><%=@question.content%></p>
-      <p>Asked by: <a href="/users/<%=@question.user_id%>"><%=@question.user.username%></a></p>
-      <p>Points: <%=@question.votes.pluck("point_value").sum %></p>
-      <a href="/questions/<%= @question.id %>/comments/new">Add Comment</a>
+  <section id="question-display">
+
+    <section id="question">
+      <h2 id="question-header"><%=@question.title%></h2>
+        <p><%= erb :'partials/vote_form', locals: { object_id: @question.id, votable_type: "Question", question_id: @question.id } %></p>
+        <section id= "display">
+        <p><%=@question.content%></p>
+        <p>Asked by: <a href="/users/<%=@question.user_id%>"><%=@question.user.username%></a></p>
+        <p>Points: <%=@question.votes.pluck("point_value").sum %></p>
+        <p><a href="/questions/<%= @question.id %>/comments/new">Add Comment</a></p>
 
         <% if current_user && current_user.id == @question.user_id %>
           <form method="POST" action="/questions/<%= @question.id %>">
             <input type="hidden" name="_method" value="delete">
             <input type="submit" value="delete">
           </form>
-          <a href="/questions/<%= @question.id %>/edit">Edit</a>
+          <p><a href="/questions/<%= @question.id %>/edit">Edit</a></p>
         <% end %>
+        </section>
+      </section>
 
-      <section class="comment-container">
+      <section class="comment_question">
         <% if @question.comments.length > 0 %>
           <h4>Comments</h4>
         <% end %>
@@ -33,7 +38,7 @@
             <% end %>
         <% end %>
       </section>
-  </section><br><br>
+  </section>
 
   <section class="answer-display">
     <h3 id="answer-header">Answers</h3>

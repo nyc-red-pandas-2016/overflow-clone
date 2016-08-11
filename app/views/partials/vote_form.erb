@@ -1,8 +1,10 @@
-<form action="/votes/new" method="post" class="vote_buttons">
-  <input type="hidden" name="vote[votable_type]" value="<%= votable_type %>">
-  <input type="hidden" name="vote[votable_id]" value="<%= object_id %>">
-  <input type="hidden" name="vote[user_id]" value="<%= current_user.id %>">
-  <input type="hidden" name="question_id" value="<%= question_id %>">
-  <input type="submit" name="vote[point_value]" value="1">
-  <input type="submit" name="vote[point_value]" value="-1">
-</form>
+<section id="votes">
+  <form action="/votes/new" method="post" class="vote_buttons">
+    <input type="hidden" name="vote[votable_type]" value="<%= votable_type %>">
+    <input type="hidden" name="vote[votable_id]" value="<%= object_id %>">
+    <input type="hidden" name="vote[user_id]" value="<%= current_user.id %>">
+    <input type="hidden" name="question_id" value="<%= question_id %>">
+    <input type="submit" name="vote[point_value]" value="1">
+    <input type="submit" name="vote[point_value]" value="-1">
+  </form>
+</section>
