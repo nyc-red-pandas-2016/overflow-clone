@@ -18,9 +18,8 @@ post '/comments' do
     if request.xhr?
       #ajax
     else
-      if params[:comment][:commentable_type] == "Answer
-    "
-        @question_id = Answer.find(params[:commentable_id]).question.id
+      if params[:comment][:commentable_type] == "Answer"
+        @question_id = Answer.find(params[:comment][:commentable_id]).question.id
         redirect "/questions/#{@question_id}"
       else
         redirect "/questions/#{@comment.commentable_id}"

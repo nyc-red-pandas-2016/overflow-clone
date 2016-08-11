@@ -33,3 +33,8 @@ get '/users/logout' do
   session.clear
   redirect '/'
 end
+
+get '/users/:id' do
+  @user_to_view = User.find_by(id: params[:id])
+  erb :'users/show'
+end
