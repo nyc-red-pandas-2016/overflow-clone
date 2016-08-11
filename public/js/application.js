@@ -13,9 +13,10 @@ $(document).ready(function() {
   });
 
   //append question to list - broken
-  $('.question_form').on('submit', function(e){
+  $(".content").on('submit',".question_form", function(e){
     e.preventDefault();
     $(this).hide();
+    // debugger;
     $.ajax({
       type: "POST",
       url: $(this).attr('action'),
