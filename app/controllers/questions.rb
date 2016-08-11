@@ -22,3 +22,20 @@ post '/questions' do
     erb :'/questions/new'
   end
 end
+
+delete '/questions/:id' do
+  @question = Question.find(params[:id])
+  @question.destroy
+  redirect '/'
+end
+
+get '/questions/:id/edit' do
+  @question = Question.find(params[:id])
+  erb :'/questions/edit'
+end
+
+put '/questions/:id' do
+  @question = Question.find(params[:id])
+  @question.update(params[:question])
+  redirect "/questions/#{@question.id}"
+end

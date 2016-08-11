@@ -1,3 +1,7 @@
+get '/comments/:id/edit' do
+  @comment = Comment.find(params[:id])
+  erb :'/comments/edit'
+end
 get '/questions/:id/comments/new' do
   @question = Question.find(params[:id])
   erb :'/comments/new'
@@ -10,7 +14,6 @@ get '/questions/:id/answers/:answer_id/comments/new' do
 end
 
 post '/comments' do
-
 
   redirect '/' unless logged_in?
   @comment = Comment.new(params[:comment])
@@ -30,3 +33,27 @@ post '/comments' do
     erb :'/comments/new'
   end
 end
+
+put '/comments/:id' do
+  @comment = Comment.find(params[:id])
+  @comment.update(params[:comment])
+    if @comment.commentable_type == "Question"
+      redirect "/questions/#{@comment.commentable_id}"
+    else @comment.commentable_type == "Answer"
+      answer = Answer.find(@comment.commentable_id)
+      redirect "/questions/#{answer.question_id}"
+    end
+end
+
+delete '/comments/:id' do
+  @comment = Comment.find(params[:id])
+  @comment.destroy
+  if @comment.commentable_type == "Question"
+      redirect "/questions/#{@comment.commentable_id}"
+  else @comment.commentable_type == "Answer"
+      answer = Answer.find(@comment.commentable_id)
+      redirect "/questions/#{answer.question_id}"
+  end
+end
+
+
