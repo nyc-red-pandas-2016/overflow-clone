@@ -2,46 +2,7 @@
 
   <!-- <section id="question-display"> -->
 
-    <section id="question">
-      <h2 id="question-header"><%=@question.title%></h2>
-        <p><%= erb :'partials/vote_form', locals: { object_id: @question.id, votable_type: "Question", question_id: @question.id } %></p>
-        <section id= "display">
-        <p><%=@question.content%></p>
-        <p>Asked by: <a href="/users/<%=@question.user_id%>"><%=@question.user.username%></a></p>
-        <p>Points: <%=@question.votes.pluck("point_value").sum %></p>
-        <p><a class="add_question_comment" href="/questions/<%= @question.id %>/comments/new">Add Comment</a></p>
-
-        <% if current_user && current_user.id == @question.user_id %>
-          <form method="POST" action="/questions/<%= @question.id %>">
-            <input type="hidden" name="_method" value="delete">
-            <input type="submit" value="delete">
-          </form>
-          <p><a href="/questions/<%= @question.id %>/edit">Edit</a></p>
-        <% end %>
-        </section>
-  <!--     </section> -->
-
-      <section class="comment_question">
-        <% if @question.comments.length > 0 %>
-          <h4>Comments</h4>
-        <% end %>
-        <% @question.comments.each do |comment| %>
-        <%= erb :'partials/vote_form', locals: { object_id: comment.id, votable_type: "Comment", question_id: @question.id } %>
-        <section id="display_comments">
-          <p><%= comment.content %></p>
-          <p>Written by: <a href="/users/<%= comment.user_id %>"><%= comment.user.username %></a></p></section>
-            <% if current_user && current_user.id == comment.user_id %>
-                <form class = "delete" method="POST" action="/comments/<%=comment.id %>">
-                <input class = "delete"type="hidden" name="_method" value="delete">
-                <input type="hidden" class="id-to-delete" value="<%= comment.id %>">
-                <input type="submit" value="delete">
-                </form>
-                <p id="edit"><a href="/comments/<%= comment.id %>/edit">Edit Comment</a></p>
-            <% end %>
-        <% end %>
-        </section>
-      </section>
-
+  <%= erb :'/partials/_question_display', locals: {question: @question}, layout: false %>
 
   <section class="best-answer-display">
     <h3 id="answer-header">Answers</h3>
