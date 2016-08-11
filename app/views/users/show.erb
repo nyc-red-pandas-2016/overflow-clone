@@ -1,5 +1,10 @@
 <div class="container">
-  <h1><%= @user_to_view.username %></h1>
+    <div id='profile-header'>
+      <img src="<%= Faker::Avatar.image %>">
+        <h1><%= @user_to_view.username %></h1>
+        <p><%= @user_to_view.email%></p>
+    </div>
+    <!-- Questions Asked -->
   <section>
     <h3>Questions That <%= @user_to_view.username %> Has Asked</h3>
     <ul>
@@ -8,6 +13,7 @@
       <% end %>
     </ul>
   </section>
+  <!-- Answers Submitted -->
   <section>
     <h3>Questions That <%= @user_to_view.username %> Has Answered</h3>
     <ul>
@@ -17,6 +23,8 @@
       <% end %>
     </ul>
   </section>
+
+  <!-- Comments Posted -->
   <section>
     <h3>Questions Where <%= @user_to_view.username %> Has Contributed Comments</h3>
     <ul>
