@@ -3,7 +3,7 @@
   <h1>Welcome to Panda Flow, <%= current_username %>!</h1>
   <ul>
     <% @questions.each do |question| %>
-    <li><a href="/questions/<%=question.id%>"><%= question.votes.pluck("point_value").sum %> <%= question.title %></a></li>
+    <li><a href="/questions/<%=question.id%>"><%= question.title %></a> <%= question.votes.pluck("point_value").sum %></li>
     <% end %>
 
   </ul>

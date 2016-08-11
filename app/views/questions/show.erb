@@ -6,6 +6,15 @@
       <p>Asked by: <a href="/users/<%=@question.user_id%>"><%=@question.user.username%></a></p>
       <p>Points: <%=@question.votes.pluck("point_value").sum %></p>
       <a href="/questions/<%= @question.id %>/comments/new">Add Comment</a>
+
+        <% if current_user && current_user.id == @question.user_id %>
+          <form method="POST" action="/questions/<%= @question.id %>">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" value="delete">
+          </form>
+          <a href="/questions/<%= @question.id %>/edit">Edit</a>
+        <% end %>
+
       <section class="comment-container">
         <% if @question.comments.length > 0 %>
           <h4>Comments</h4>
@@ -14,6 +23,13 @@
         <%= erb :'partials/vote_form', locals: { object_id: comment.id, votable_type: "Comment", question_id: @question.id } %>
           <p><%= comment.content %></p>
           <p>Written by: <a href="/users/<%= comment.user_id %>"><%= comment.user.username %></a></p>
+            <% if current_user && current_user.id == comment.user_id %>
+                <form method="POST" action="/comments/<%=comment.id %>">
+                <input type="hidden" name="_method" value="delete">
+                <input type="submit" value="delete">
+                </form>
+                <a href="/comments/<%= comment.id %>/edit">Edit Comment</a>
+            <% end %>
         <% end %>
       </section>
   </section><br><br>
@@ -26,6 +42,15 @@
         <p><%= answer.content%></p>
         <p>Answered By: <a href="/users/<%= answer.user_id %>"><%= answer.user.username%></a></p><br>
         <a href="/questions/<%= @question.id %>/answers/<%= answer.id%>/comments/new">Add Comment</a>
+
+          <% if current_user && current_user.id == answer.user_id %>
+            <form method="POST" action="/answers/<%= answer.id %>">
+              <input type="hidden" name="_method" value="delete">
+              <input type="submit" value="delete">
+            </form>
+          <a href="/answers/<%= answer.id %>/edit">Edit</a>
+          <% end %>
+
         <section class="comment-container">
           <% if answer.comments.length > 0 %>
             <h4>Comments</h4>
@@ -34,6 +59,13 @@
           <%= erb :'partials/vote_form', locals: { object_id: comment.id, votable_type: "Comment", question_id: @question.id } %>
             <p><%= comment.content %></p>
             <p>Written by: <a href="/users/<%= comment.user_id %>"><%= comment.user.username %></a></p>
+              <% if current_user && current_user.id == comment.user_id %>
+                <form method="POST" action="/comments/<%=comment.id %>">
+                <input type="hidden" name="_method" value="delete">
+                <input type="submit" value="delete">
+                </form>
+                <a href="/comments/<%= comment.id%>/edit">Edit Comment</a>
+              <% end %>
           <% end %>
         </section>
       <% end %>
