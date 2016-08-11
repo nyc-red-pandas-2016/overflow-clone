@@ -58,7 +58,7 @@ nav{
 .navigation {
   float: right;
   width: 100%;
-  background-color: red;
+  background-color: white;
   position: fixed;
   top: 0px;
   display: inline-flex;
@@ -68,12 +68,14 @@ nav{
 .navigation h1 {
 font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 font-kerning: auto;
-font-size: 24px;
+font-size: 28px;
 font-stretch: normal;
 font-style: normal;
 font-variant: normal;
 font-variant-ligatures: normal;
 font-weight: normal;
+color: black;
+margin-left: 30px;
 }
 
 .navigation ul{
@@ -89,7 +91,7 @@ font-weight: normal;
 }
 
 .navigation ul li a{
-  color: white;
+  color: black;
   padding: 5px 5px 5px 5px;
 }
 
@@ -271,4 +273,46 @@ p#edit{
     color: black;
     text-decoration: none;
     border-bottom: none;
+}
+
+
+---------------
+Login Form
+---------------
+#wrapper {
+  width: 300px;
+  height: 400px;
+  margin: 70px auto;
+}
+
+.login-form {
+  width: 300px;
+  margin: auto;
+  position: relative;
+
+  background: #f3f3f3;
+  border: 1px solid #fff;
+  border-radius: 5px;
+
+  box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.login-form .header {
+  padding: 40px 30px 30px 30px;
+}
+
+.login-form .header h1 {
+  font-family: 'Bree Serif', serif;
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 34px;
+  color: #414848;
+  text-shadow: 1px 1px 0 rgba(256, 256, 256,1.0);
+  margin-bottom: 10px;
+}
+
+.login-form .content {
+  padding: 0 30px 25px 30px;
 }
