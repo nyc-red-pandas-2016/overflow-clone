@@ -4,40 +4,45 @@
         <h1><%= @user_to_view.username %></h1>
         <p><%= @user_to_view.email%></p>
     </div>
-    <!-- Questions Asked -->
-  <section>
-    <h3>Questions That <%= @user_to_view.username %> Has Asked</h3>
-    <ul>
-      <% @user_to_view.questions.each do |question| %>
-        <li><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
-      <% end %>
-    </ul>
-  </section>
-  <!-- Answers Submitted -->
-  <section>
-    <h3>Questions That <%= @user_to_view.username %> Has Answered</h3>
-    <ul>
-      <% questions_answered = @user_to_view.answers.map { |answer| answer.question } %>
-      <% questions_answered.uniq.each do |question| %>
-        <li><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
-      <% end %>
-    </ul>
-  </section>
 
-  <!-- Comments Posted -->
-  <section>
-    <h3>Questions Where <%= @user_to_view.username %> Has Contributed Comments</h3>
-    <ul>
-      <% questions_commented = @user_to_view.comments.map do |comment|
-        if comment.commentable_type == "Question"
-          Question.find_by(id: comment.commentable_id)
-        else
-          Answer.find_by(id: comment.commentable_id).question
-        end
-      end %>
-      <% questions_commented.uniq.each do |question| %>
-        <li><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
-      <% end %>
-    </ul>
-  </section>
+      <ul class="tabs">
+          <li class="active"><a href="#questions">Questions</a></li>
+          <li><a href="#answers">Answers</a></li>
+          <li><a href="#comments">Comments</a></li>
+      </ul>
+
+    <div class="tab-content" id="questions">
+      <h3>Questions That <%= @user_to_view.username %> Has Asked</h3>
+        <ul>
+          <% @user_to_view.questions.each do |question| %>
+          <li><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
+          <% end %>
+        </ul>
+    </div>
+
+    <div class="tab-content" id="answers">
+      <h3>Questions That <%= @user_to_view.username %> Has Answered</h3>
+      <ul>
+        <% questions_answered = @user_to_view.answers.map { |answer| answer.question } %>
+        <% questions_answered.uniq.each do |question| %>
+          <li><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="tab-content" id="comments">
+      <h3>Questions Where <%= @user_to_view.username %> Has Contributed Comments</h3>
+      <ul>
+          <% questions_commented = @user_to_view.comments.map do |comment|
+            if comment.commentable_type == "Question"
+              Question.find_by(id: comment.commentable_id)
+            else
+              Answer.find_by(id: comment.commentable_id).question
+            end
+          end %>
+          <% questions_commented.uniq.each do |question| %>
+            <li><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
+          <% end %>
+      </ul>
+    </div>
 </div>

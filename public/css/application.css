@@ -1,13 +1,9 @@
-* {
+/** {
   border: solid black 1px;
-}
+}*/
 
-p{
+p {
   overflow: overlay;
-}
-
-h1 {
-  font-family: 'Atomic Age', cursive;
 }
 
 /*Home Page Layout*/
@@ -67,6 +63,17 @@ nav{
   top: 0px;
   display: inline-flex;
   padding: 0px 5px 0px 5px;
+}
+
+.navigation h1 {
+font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+font-kerning: auto;
+font-size: 24px;
+font-stretch: normal;
+font-style: normal;
+font-variant: normal;
+font-variant-ligatures: normal;
+font-weight: normal;
 }
 
 .navigation ul{
@@ -205,10 +212,6 @@ p#edit{
   margin-top: 5% auto;
 }
 
-#profile-header span{
-
-}
-
 #profile-header h1{
   display: inline;
   width: 70%;
@@ -223,7 +226,49 @@ p#edit{
   margin-left: 9.5%;
 }
 
-#profile-header img{
+#profile-header img {
   display: inline-block;
   width:20%;
+  /*height: 20%;*/
+}
+
+.tab-content {
+    display: none;
+}
+
+
+.tabs {
+    float: left;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    margin-bottom: 16px;
+    list-style: none;
+}
+.tabs li {
+    float: left;
+    margin-right: 16px;
+    padding: 10px 15px;
+    height: 30px;
+    line-height: 30px;
+}
+.tabs li a {
+    color: #666;
+    font-family: Helvetica, Arial, sans-serif;
+    text-decoration: none;
+}
+
+.tabs li.active {
+    border: 1px solid #ccc;
+    border-bottom: 1px solid white;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    margin-bottom: -1px;
+    height: 31px;
+    padding: 9px 14px;
+}
+
+.tabs li.active a {
+    color: black;
+    text-decoration: none;
+    border-bottom: none;
 }
