@@ -4,7 +4,11 @@ get '/comments/:id/edit' do
 end
 get '/questions/:id/comments/new' do
   @question = Question.find(params[:id])
-  erb :'/comments/new'
+  if request.xhr?
+    erb :'/comments/new', layout: false
+  else
+    erb :'/comments/new'
+  end
 end
 
 get '/questions/:id/answers/:answer_id/comments/new' do
@@ -19,7 +23,7 @@ post '/comments' do
   @comment = Comment.new(params[:comment])
   if @comment.save
     if request.xhr?
-      #ajax
+      erb :'/partials/_new_comment', layout: false, locals: {comment: @comment}
     else
       if params[:comment][:commentable_type] == "Answer"
         @question_id = Answer.find(params[:comment][:commentable_id]).question.id

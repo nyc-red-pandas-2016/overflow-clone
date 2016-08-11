@@ -11,6 +11,7 @@
         <p>Points: <%=@question.votes.pluck("point_value").sum %></p>
         <p><a href="/questions/<%= @question.id %>/comments/new">Add Comment</a></p>
 
+
         <% if current_user && current_user.id == @question.user_id %>
           <form method="POST" action="/questions/<%= @question.id %>">
             <input type="hidden" name="_method" value="delete">
@@ -37,6 +38,7 @@
                 <a href="/comments/<%= comment.id %>/edit">Edit Comment</a>
             <% end %>
         <% end %>
+
       </section>
   </section>
 
@@ -47,6 +49,7 @@
       <% best_answer ? answer_array = [best_answer] : answer_array = [] %>
       <% answer_array += other_answers %>
       <% answer_array.each do |answer| %>
+      <div>
       <% if current_user == @question.user && answer.best_answer == false %>
         <form action="/answer/<%= answer.id %>/best" method="post">
             <input type="hidden" name="_method" value="put">
@@ -56,11 +59,12 @@
       <% if answer.best_answer == true %>
         <p>This answer is the best!</p>
       <% end %>
+
         <%= erb :'partials/vote_form', locals: { object_id: answer.id, votable_type: "Answer", question_id: @question.id } %>
         <%= answer.votes.pluck("point_value").sum %>
         <p><%= answer.content%></p>
         <p>Answered By: <a href="/users/<%= answer.user_id %>"><%= answer.user.username%></a></p><br>
-        <a href="/questions/<%= @question.id %>/answers/<%= answer.id%>/comments/new">Add Comment</a>
+        <a class ="add_answer_comment" href="/questions/<%= @question.id %>/answers/<%= answer.id%>/comments/new">Add Comment</a>
 
           <% if current_user && current_user.id == answer.user_id %>
             <form method="POST" action="/answers/<%= answer.id %>">
@@ -69,7 +73,7 @@
             </form>
           <a href="/answers/<%= answer.id %>/edit">Edit</a>
           <% end %>
-
+      </div>
         <section class="comment-container">
           <% if answer.comments.length > 0 %>
             <h4>Comments</h4>

@@ -1,6 +1,10 @@
 get '/questions/new' do
   redirect '/' unless logged_in?
-  erb :'/questions/new'
+    if request.xhr?
+      erb :'/questions/new', layout: false
+    else
+      erb :'/questions/new'
+    end
 end
 
 get '/questions/:id' do
@@ -13,7 +17,7 @@ post '/questions' do
   redirect '/' unless logged_in?
   if @question.save
     if request.xhr?
-      #ajax
+      erb :'/partials/_new_question', layout: false, locals: {question: @question}
     else
       redirect '/'
     end
