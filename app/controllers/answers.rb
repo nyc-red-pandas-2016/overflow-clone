@@ -3,7 +3,7 @@ post '/questions/:id/answers' do
     redirect '/' unless logged_in?
     if @answer.save
       if request.xhr?
-        #ajax
+        erb :'/partials/_new_answer', layout: false, locals: {answer: @answer}
       else
         redirect "/questions/#{@answer.question_id}"
       end
@@ -16,7 +16,7 @@ end
 delete '/answers/:id' do
   @answer = Answer.find(params[:id])
   @answer.destroy
-  redirect "/questions/#{@answer.question_id}"
+  redirect "/questions/#{@answer.question_id}" unless request.xhr?
 end
 
 get '/answers/:id/edit' do

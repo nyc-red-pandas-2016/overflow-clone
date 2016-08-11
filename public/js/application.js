@@ -56,18 +56,44 @@ $(document).ready(function() {
 
     //append comment to appropriate container
 
-  //   $('.comment_form').on('submit', function(e){
-  //   e.preventDefault();
-  //   $(this).hide();
-  //   $('.add_answer_comment, .add_question_comment').show();
-  //   $.ajax({
-  //     type: "POST",
-  //     url: $(this).attr('action'),
-  //     data: $(this).serialize()
-  //   })
-  //   .done(function(response){
-  //     debugger;
-  //     $('.comment-container').append(response)
-  //   })
-  // });
+    $('.comment_form').on('submit', function(e){
+    e.preventDefault();
+    $(this).hide();
+    $('.add_answer_comment, .add_question_comment').show();
+
+    $.ajax({
+      type: "POST",
+      url: $(this).attr('action'),
+      data: $(this).serialize()
+    })
+    .done(function(response){
+      $('.comment-container').append(response)
+    })
+  });
+
+    $('.container').on("submit", ".delete", function(e){
+      e.preventDefault();
+        debugger;
+      $.ajax({
+        type: "DELETE",
+        url: $(this).attr('action'),
+        data: $(this).find('.id-to-delete').val()
+      })
+      .done(function(response) {
+        $(e.target).parent().parent().empty();
+        $(e.target).parent().remove();
+      })
+    })
+
+    $('#post-answer').on("submit", function(e){
+      e.preventDefault();
+      $.ajax({
+        type: "POST",
+        url: $(e.target).attr('action'),
+        data: $(e.target).serialize()
+      })
+      .done(function(response){
+        $('.answer-display').append(response)
+      })
+    })
 });

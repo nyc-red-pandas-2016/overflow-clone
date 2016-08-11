@@ -1,0 +1,50 @@
+<div class="answer-and-comment-combined">
+  <div class="answer-display">
+  <% if current_user == @question.user && answer.best_answer == false %>
+    <form action="/answer/<%= answer.id %>/best" method="post">
+        <input type="hidden" name="_method" value="put">
+        <input type="submit" value="Declare Best Answer">
+    </form>
+  <% end %>
+  <% if answer.best_answer == true %>
+    <p>This answer is the best!</p>
+  <% end %>
+
+  <%= erb :'partials/vote_form', locals: { object_id: answer.id, votable_type: "Answer", question_id: @question.id } %>
+  <%= answer.votes.pluck("point_value").sum %>
+  <p><%= answer.content%></p>
+  <p>Answered By: <a href="/users/<%= answer.user_id %>"><%= answer.user.username%></a></p><br>
+  <% if current_user %>
+  <a class="add_answer_comment" href="/questions/<%= @question.id %>/answers/<%= answer.id%>/comments/new">Add Comment</a>
+  <% end %>
+
+    <% if current_user && current_user.id == answer.user_id %>
+      <form class = "delete" method="POST" action="/answers/<%= answer.id %>">
+        <input type="hidden" name="_method" value="delete">
+        <input type="hidden" class="id-to-delete" value="<%= answer.id %>">
+        <input type="submit" value="delete">
+      </form>
+    <a href="/answers/<%= answer.id %>/edit">Edit</a>
+    <% end %>
+    <section class="comment-container">
+          <% if answer.comments.length > 0 %>
+            <h4>Comments</h4>
+          <% end %>
+          <% answer.comments.each do |comment| %>
+          <%= erb :'partials/vote_form', locals: { object_id: comment.id, votable_type: "Comment", question_id: @question.id } %>
+            <p><%= comment.content %></p>
+            <p>Written by: <a href="/users/<%= comment.user_id %>"><%= comment.user.username %></a></p>
+              <% if current_user && current_user.id == comment.user_id %>
+                <form class = "delete" method="POST" action="/comments/<%=comment.id %>">
+                <input type="hidden" name="_method" value="delete">
+                <input type="hidden" class="id-to-delete" value="<%= comment.id %>">
+                <input type="submit" value="delete">
+                </form>
+                <a href="/comments/<%= comment.id%>/edit">Edit Comment</a>
+              <% end %>
+          <% end %>
+        </section>
+      </div>
+      <% end %>
+  </section>
+</div>

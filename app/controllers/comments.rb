@@ -58,10 +58,10 @@ delete '/comments/:id' do
   @comment = Comment.find(params[:id])
   @comment.destroy
   if @comment.commentable_type == "Question"
-      redirect "/questions/#{@comment.commentable_id}"
+      redirect "/questions/#{@comment.commentable_id}" unless request.xhr?
   else @comment.commentable_type == "Answer"
       answer = Answer.find(@comment.commentable_id)
-      redirect "/questions/#{answer.question_id}"
+      redirect "/questions/#{answer.question_id}" unless request.xhr?
   end
 end
 
