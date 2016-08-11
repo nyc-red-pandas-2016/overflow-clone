@@ -2,19 +2,23 @@
   border: solid black 1px;
 }
 
+h1 {
+  font-family: 'Atomic Age', cursive;
+}
+
 .container {
-  margin: 2% auto;
+  margin: 5% auto;
 /*  width: 600px;*/
   padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
-  background-color: #E0E0E0 ;
+  /*border: 1px dotted black;*/
+
 }
 
 .content  {
   margin: 5% auto;
   width: 600px;
   padding: 20px 20px 20px 20px;
-  border: 1px dotted black;
+  /*border: 1px dotted black;*/
 }
 
 .content .questions{
@@ -24,22 +28,34 @@
 }
 
 .content .question {
-  margin: 20px 0 20px 0;
-  padding: 0px 0 20px 0;
+  margin: 20px 0px 20px 0px;
+  padding: 5px 5px 5px 5px;
+  background-color: white;
+  border-radius: 5px;
+-webkit-box-shadow: 2px 4px 45px 1px rgba(0,0,0,0.67);
+-moz-box-shadow: 2px 4px 45px 1px rgba(0,0,0,0.67);
+box-shadow: 2px 4px 45px 1px rgba(0,0,0,0.67);
 }
 
 .content a {
  display: block;
 }
 
+.attributes{
+  list-style-type: none;
+  display: inline-flex;
+
+}
+
+.attributes li {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
 
 th {
   text-align: left;
 }
-
-/** {
-  margin-left: 20px;
-}*/
 
 .comment-container {
   font-size: .75em;
@@ -75,18 +91,32 @@ th {
 .navigation {
   float: right;
   width: 100%;
-  background-color: black;
+  background-color: red;
   position: fixed;
   top: 0px;
+  display: inline-flex;
+  padding: 0px 5px 0px 5px;
+}
+
+nav{
+  float: right;
+  position: absolute;
+  right: 0;
 }
 
 .navigation ul{
   display: inline-flex;
   list-style-type: none;
   float: right;
-  padding-right: 20px;
-
+  padding: 0 20px 0 20px;
 
 }
+.navigation ul li{
 
+ padding: 10px 10px 10px 10px;
+}
+.navigation ul li a{
+ color: white;
+ padding: 5px 5px 5px 5px;
+}
 
