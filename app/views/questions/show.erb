@@ -1,7 +1,8 @@
 <div class="container">
-  <%= erb :'partials/vote_form', locals: { object_id: @question.id, votable_type: "Question", question_id: @question.id } %>
+
   <section class="question-display">
     <h2 id="question-header"><%=@question.title%></h2>
+      <p><%= erb :'partials/vote_form', locals: { object_id: @question.id, votable_type: "Question", question_id: @question.id } %></p>
       <p><%=@question.content%></p>
       <p>Asked by: <a href="/users/<%=@question.user_id%>"><%=@question.user.username%></a></p>
       <p>Points: <%=@question.votes.pluck("point_value").sum %></p>

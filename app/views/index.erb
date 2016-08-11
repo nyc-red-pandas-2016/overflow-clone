@@ -1,12 +1,18 @@
 <div class="container">
-
-  <h1>Welcome to Panda Flow, <%= current_username %>!</h1>
  <section class="content">
   <ul class="questions">
     <% @questions.each do |question| %>
-    <li class="question"><a href="/questions/<%=question.id%>"><%= question.title %></a> <%= question.votes.pluck("point_value").sum %></li>
+    <li class="question">
+      <a href="/questions/<%=question.id%>"><%= question.title %></a>
+      <ul class="attributes">
+        <li>By: <%= question.user.username %></li>
+        <li>Votes: <%= question.votes.pluck("point_value").sum %></li>
+        <li>Comments: <%= question.comments.count %>
+      </ul>
+      <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings.</p>
+    </li>
     <% end %>
   </ul>
-  <a href="/questions/new">Ask a Question</a>
+  <a class="ask_question" href="/questions/new">Ask a Question</a>
 </section>
 </div>
