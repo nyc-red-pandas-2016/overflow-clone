@@ -1,3 +1,4 @@
+<div class= "new_comment">
 <% if @question%>
   <% commentable_id = @question.id %>
   <% commentable_type = "Question" %>
@@ -14,3 +15,4 @@
   <input type="hidden" name="comment[user_id]" value="<%= current_user.id %>">
   <input type="submit" value="Add Comment">
 </form>
+</div>

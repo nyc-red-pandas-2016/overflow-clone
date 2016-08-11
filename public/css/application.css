@@ -6,12 +6,10 @@ h1 {
   font-family: 'Atomic Age', cursive;
 }
 
+/*Home Page Layout*/
 .container {
   margin: 5% auto;
-/*  width: 600px;*/
   padding: 0px 20px 20px 20px;
-  /*border: 1px dotted black;*/
-
 }
 
 .content  {
@@ -24,7 +22,6 @@ h1 {
 .content .questions{
   list-style-type: none;
   padding: 0;
-
 }
 
 .content .question {
@@ -32,9 +29,9 @@ h1 {
   padding: 5px 5px 5px 5px;
   background-color: white;
   border-radius: 5px;
--webkit-box-shadow: 2px 4px 45px 1px rgba(0,0,0,0.67);
--moz-box-shadow: 2px 4px 45px 1px rgba(0,0,0,0.67);
-box-shadow: 2px 4px 45px 1px rgba(0,0,0,0.67);
+  -webkit-box-shadow: 2px 4px 45px 1px rgba(0,0,0,0.67);
+  -moz-box-shadow: 2px 4px 45px 1px rgba(0,0,0,0.67);
+  box-shadow: 2px 4px 45px 1px rgba(0,0,0,0.67);
 }
 
 .content a {
@@ -44,7 +41,6 @@ box-shadow: 2px 4px 45px 1px rgba(0,0,0,0.67);
 .attributes{
   list-style-type: none;
   display: inline-flex;
-
 }
 
 .attributes li {
@@ -52,40 +48,11 @@ box-shadow: 2px 4px 45px 1px rgba(0,0,0,0.67);
   padding-right: 5px;
 }
 
-
-th {
-  text-align: left;
-}
-
-.comment-container {
-  font-size: .75em;
-  padding-left: 40px;
-  margin-top: 10px;
-  border-top: 1px solid gray;
-  border-bottom: 1px solid gray;
-  margin-bottom: 10px;
-}
-
-#answer-header {
-  border-bottom: 1px solid gray;
-  padding-bottom: 5px;
-  text-align: center;
-}
-
-#question-header {
-  font-size: 2em;
-  text-align: center;
-}
-
-#answer-question-form input, textarea {
-  display: block;
-  margin: 5px auto;
-  text-align: center;
-}
-
-#login-form input, label, #register-form input, label {
-  display: block;
-  margin: 0px 0px 5px 40px;
+/*Navigation Bar layout*/
+nav{
+  float: right;
+  position: absolute;
+  right: 0;
 }
 
 .navigation {
@@ -98,12 +65,6 @@ th {
   padding: 0px 5px 0px 5px;
 }
 
-nav{
-  float: right;
-  position: absolute;
-  right: 0;
-}
-
 .navigation ul{
   display: inline-flex;
   list-style-type: none;
@@ -111,12 +72,36 @@ nav{
   padding: 0 20px 0 20px;
 
 }
+
 .navigation ul li{
-
- padding: 10px 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
 }
+
 .navigation ul li a{
- color: white;
- padding: 5px 5px 5px 5px;
+  color: white;
+  padding: 5px 5px 5px 5px;
 }
 
+/* New Comment Page Layout */
+.new_comment{
+  margin: 10% auto;
+  width: 600px;
+  padding: 20px 20px 20px 20px;
+}
+
+.new_comment form {
+    padding: 20px 20px 20px 20px;
+}
+
+.new_comment input[type="text"] {
+    height: 200px;
+    width: 100%;
+    margin-top: 15px;
+}
+.new_comment label {
+  padding: 5px 5px;
+}
+
+.new_comment input[type="submit"] {
+    margin-top: 15px;
+}
