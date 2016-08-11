@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  //show add_question form - works
+  //show add_question form
   $(".ask_question").on("click", function(e){
     e.preventDefault();
     $(this).hide();
@@ -12,7 +12,7 @@ $(document).ready(function() {
     });
   });
 
-  //append question to list - broken
+//submit question to list
   $(".content").on('submit',".question_form", function(e){
     e.preventDefault();
     $(this).hide();
@@ -92,7 +92,7 @@ $(document).ready(function() {
 
     // Deletes comments and answers - broken
 
-    $('.answer-and-comment-combined').on("submit", ".delete", function(e){
+    $('.question_page_container').on("submit", ".delete", function(e){
       e.preventDefault();
       $.ajax({
         type: "DELETE",
@@ -100,26 +100,14 @@ $(document).ready(function() {
         data: $(this).find('.id-to-delete').val()
       })
       .done(function(response) {
+        // debugger;
         $(e.target).parent().parent().empty();
         $(e.target).parent().remove();
       })
     })
 
-    // Deletes comments on question - broken
 
-    $('.container').on("submit", ".delete", function(e){
-      e.preventDefault();
-      $.ajax({
-        type: "DELETE",
-        url: $(this).attr('action'),
-        data: $(this).find('.id-to-delete').val()
-      })
-      .done(function(response) {
-        $(e.target).parent().parent().empty();
-        $(e.target).parent().remove();
-      })
-    })
-
+  //submit answer to question
     $('#post-answer').on("submit", function(e){
       e.preventDefault();
       $.ajax({
@@ -128,7 +116,7 @@ $(document).ready(function() {
         data: $(e.target).serialize()
       })
       .done(function(response){
-        debugger;
+        $(e.target).find('textarea').val("");
         $('.best-answer-display').append(response)
       })
     })
