@@ -2,6 +2,10 @@
   border: solid black 1px;
 }
 
+p{
+  overflow: overlay;
+}
+
 h1 {
   font-family: 'Atomic Age', cursive;
 }
@@ -141,26 +145,58 @@ section#question_display {
     padding: 20px 20px;
 }
 
-section#comment_question {
+/*section#comment_question {
     padding: 20px 20px;
     float: right;
-}
+}*/
 
 section#question {
     padding: 20px 20px;
 }
 
 section#display{
-   padding-left: 10%;
+   margin-left: 8%;
 }
+
+section.comment_question{
+   margin-left: 8%;
+}
+
+#display_comments{
+  margin-left: 8%;
+}
+
+form.delete{
+  margin-left: inherit;
+}
+
+p#edit{
+  margin-left: inherit;
+}
+/*Votes Buttons*/
 #votes{
   float: left;
-  margin-top: 2em;
+  margin-top: 1em;
   margin-left: 2em;
 }
 
-#votes input[value="1"] {
-
+#votes input[id="+1"] {
+  background-image: url("https://openclipart.org/image/2400px/svg_to_png/192852/thumbs-up-right.png"),none;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-color: none;
+  width: 2em;
+  height: 2.9em;
+  display: block;
+}
+#votes input[id="-1"] {
+  background-image: url("http://www.clipartkid.com/images/47/thumbs-down-by-savanaprice-pIFdcY-clipart.png"),none;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-color: none;
+  width: 2em;
+  height: 2.9em;
+  display: block;
 }
 
 /*Profile Page*/
