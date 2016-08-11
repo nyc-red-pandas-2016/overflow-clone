@@ -43,12 +43,14 @@ $(document).ready(function() {
     $(".add_answer_comment").on("click", function(e){
     e.preventDefault();
     $(this).hide();
+     // debugger;
     $.ajax({
       url: $(this).attr('href'),
       type: "GET"
     })
     .done(function(response) {
-      $('."+comment.answer_id+"').append(response)
+      // var answer_class = $(response).find('#commentable-id').attr('value')
+      $(e.target).parent().append(response)
     });
   });
 

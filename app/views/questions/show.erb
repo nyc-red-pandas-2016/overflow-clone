@@ -64,7 +64,7 @@
         <%= answer.votes.pluck("point_value").sum %>
         <p><%= answer.content%></p>
         <p>Answered By: <a href="/users/<%= answer.user_id %>"><%= answer.user.username%></a></p><br>
-        <a class ="add_answer_comment" href="/questions/<%= @question.id %>/answers/<%= answer.id%>/comments/new">Add Comment</a>
+        <a class="add_answer_comment" href="/questions/<%= @question.id %>/answers/<%= answer.id%>/comments/new">Add Comment</a>
 
           <% if current_user && current_user.id == answer.user_id %>
             <form method="POST" action="/answers/<%= answer.id %>">

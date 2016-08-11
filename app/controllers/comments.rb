@@ -5,6 +5,7 @@ end
 get '/questions/:id/comments/new' do
   @question = Question.find(params[:id])
   if request.xhr?
+    # binding.pry
     erb :'/comments/new', layout: false
   else
     erb :'/comments/new'
@@ -14,7 +15,11 @@ end
 get '/questions/:id/answers/:answer_id/comments/new' do
   redirect '/' unless logged_in?
   @answer = Answer.find(params[:answer_id])
-  erb :'/comments/new'
+  if request.xhr?
+    erb :'/comments/new', layout: false
+  else
+    erb :'/comments/new'
+  end
 end
 
 post '/comments' do
