@@ -2,6 +2,7 @@ get '/comments/:id/edit' do
   @comment = Comment.find(params[:id])
   erb :'/comments/edit'
 end
+
 get '/questions/:id/comments/new' do
   @question = Question.find(params[:id])
   if request.xhr?
@@ -23,12 +24,16 @@ get '/questions/:id/answers/:answer_id/comments/new' do
 end
 
 post '/comments' do
-
   redirect '/' unless logged_in?
   @comment = Comment.new(params[:comment])
   if @comment.save
     if request.xhr?
-      erb :'/partials/_new_comment', layout: false, locals: {comment: @comment}
+      if params[:comment][:commentable_type] == "Question"
+        erb :'/partials/_new_comment', layout: false, locals: {comment: @comment, question: Question.find(@comment.commentable_id)}
+      else
+        answer = Answer.find(@comment.commentable_id)
+        erb :'/partials/_new_comment', layout: false, locals: {comment: @comment, question: answer.question}
+      end
     else
       if params[:comment][:commentable_type] == "Answer"
         @question_id = Answer.find(params[:comment][:commentable_id]).question.id
