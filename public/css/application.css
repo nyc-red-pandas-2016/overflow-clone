@@ -1,16 +1,45 @@
+* {
+  border: solid black 1px;
+}
+
 .container {
-  margin: 20px auto;
-  width: 600px;
+  margin: 2% auto;
+/*  width: 600px;*/
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
+  background-color: #E0E0E0 ;
 }
+
+.content  {
+  margin: 5% auto;
+  width: 600px;
+  padding: 20px 20px 20px 20px;
+  border: 1px dotted black;
+}
+
+.content .questions{
+  list-style-type: none;
+  padding: 0;
+
+}
+
+.content .question {
+  margin: 20px 0 20px 0;
+  padding: 0px 0 20px 0;
+}
+
+.content a {
+ display: block;
+}
+
+
 th {
   text-align: left;
 }
 
-* {
+/** {
   margin-left: 20px;
-}
+}*/
 
 .comment-container {
   font-size: .75em;
@@ -42,3 +71,22 @@ th {
   display: block;
   margin: 0px 0px 5px 40px;
 }
+
+.navigation {
+  float: right;
+  width: 100%;
+  background-color: black;
+  position: fixed;
+  top: 0px;
+}
+
+.navigation ul{
+  display: inline-flex;
+  list-style-type: none;
+  float: right;
+  padding-right: 20px;
+
+
+}
+
+

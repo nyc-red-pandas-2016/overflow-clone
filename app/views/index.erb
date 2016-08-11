@@ -1,11 +1,12 @@
 <div class="container">
 
   <h1>Welcome to Panda Flow, <%= current_username %>!</h1>
-  <ul>
+ <section class="content">
+  <ul class="questions">
     <% @questions.each do |question| %>
-    <li><a href="/questions/<%=question.id%>"><%= question.title %></a> <%= question.votes.pluck("point_value").sum %></li>
+    <li class="question"><a href="/questions/<%=question.id%>"><%= question.title %></a> <%= question.votes.pluck("point_value").sum %></li>
     <% end %>
-
   </ul>
   <a href="/questions/new">Ask a Question</a>
+</section>
 </div>
