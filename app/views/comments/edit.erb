@@ -1,7 +1,8 @@
-
+<div class="edit_comment">
 <form method="POST" action="/comments/<%= @comment.id %>">
   <input type="hidden" name="_method" value="put">
   <label for="comment">Comment: </label>
-  <input type="text" name="comment[content]" value="<%= @comment.content %>">
+    <textarea name="comment[content]" value="<%= @comment.content %>"></textarea>
   <input type="submit" value="Edit Comment">
 </form>
+</div>

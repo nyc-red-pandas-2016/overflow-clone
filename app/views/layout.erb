@@ -25,8 +25,10 @@
       <ul>
       <li><a href="/">Home</a></li>
       <% if logged_in? %>
+      <li><a href="/users/<%= current_user_id %>">Profile</a></li>
       <li><a href="/users/logout"> Logout </a></li>
-      <li><a href="/users/<%= current_user_id %>"><%= current_username %></a></li>
+
+      <li>Welcome, <%= current_username %>!</li>
       <% else %>
       <li><a href="/users/new"> Register </a></li>
       <li><a href="/users/login"> Login </a></li>
