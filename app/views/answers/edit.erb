@@ -1,5 +1,5 @@
 <form method = "POST" action = "/answers/<%= @answer.id %>">
   <input type="hidden" name="_method" value="put">
-  <textarea rows="5" cols="40" class="text" name="answer[content]"></textarea>
+  <textarea rows="5" cols="40" value=<%=@answer.content%>class="text" name="answer[content]"></textarea>
     <input type="submit" value="Edit Answer">
 </form>

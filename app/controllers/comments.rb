@@ -1,6 +1,10 @@
 get '/comments/:id/edit' do
   @comment = Comment.find(params[:id])
-  erb :'/comments/edit'
+  if request.xhr?
+    erb :'/comments/edit', layout: false
+  else
+    erb :'/comments/edit'
+  end
 end
 
 get '/questions/:id/comments/new' do

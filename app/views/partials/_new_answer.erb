@@ -11,9 +11,10 @@
   <% end %>
 
   <%= erb :'partials/vote_form', locals: { object_id: answer.id, votable_type: "Answer", question_id: question.id } %>
-  <%= answer.votes.pluck("point_value").sum %>
   <p><%= answer.content%></p>
-  <p>Answered By: <a href="/users/<%= answer.user_id %>"><%= answer.user.username%></a></p><br>
+  <p>Answered By: <a href="/users/<%= answer.user_id %>"><%= answer.user.username%></a></p><br><p class="points">Points: <span class="point_val">
+  <%= answer.votes.pluck("point_value").sum %></span></p>
+
   <% if current_user %>
   <a class="add_answer_comment" href="/questions/<%= question.id %>/answers/<%= answer.id%>/comments/new">Add Comment</a>
   <% end %>
@@ -26,6 +27,7 @@
       </form>
     <a href="/answers/<%= answer.id %>/edit">Edit</a>
     <% end %>
+      </div>
     <section class="comment-container">
           <% if answer.comments.length > 0 %>
             <h4>Comments</h4>
@@ -42,7 +44,8 @@
                 </form>
                 <a href="/comments/<%= comment.id%>/edit">Edit Comment</a>
               <% end %>
+              <p class="points">Points: <span class="point_val">
+              <%= comment.votes.pluck("point_value").sum %></span></p>
           <% end %>
         </section>
-      </div>
 </div>

@@ -21,7 +21,11 @@ end
 
 get '/answers/:id/edit' do
   @answer = Answer.find(params[:id])
-  erb :'/answers/edit'
+  if request.xhr?
+    erb :'/answers/edit', layout: false
+  else
+    erb :'/answers/edit'
+  end
 end
 
 put '/answers/:id' do

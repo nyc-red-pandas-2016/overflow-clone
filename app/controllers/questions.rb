@@ -35,7 +35,11 @@ end
 
 get '/questions/:id/edit' do
   @question = Question.find(params[:id])
-  erb :'/questions/edit'
+  if request.xhr?
+    erb :'/questions/edit', layout: false
+  else
+    erb :'/questions/edit'
+  end
 end
 
 put '/questions/:id' do
