@@ -26,7 +26,7 @@
   <div class="navigation">
     <h1 class="logo-font">Snack<strong>Overflow</strong></h1>
     <nav>
-      <ul>
+      <ul id="nav-list">
       <li><a href="/">Home</a></li>
       <% if logged_in? %>
       <li><a href="/users/<%= current_user_id %>">Profile</a></li>
@@ -38,8 +38,8 @@
       </ul>
       <form action="/tags/search_by_name" method="post">
         <input type="hidden" name="_method" value="put">
-        <input type="text" name="tag_name" placeholder="Search by tag">
-        <input type="submit" value="Search">
+        <input id="search-text" type="text" name="tag_name" placeholder="Search by tag">
+        <input id="search-submit" type="submit" value="Search">
       </form>
     </nav>
   </div>

@@ -1,6 +1,4 @@
 
-<section id="display_comments">
-
 <%= erb :'partials/vote_form', locals: { object_id: comment.id, votable_type: "Comment", question_id: question.id } %>
 
   <p><%= comment.content %></p>
@@ -12,4 +10,3 @@
     </form>
     <a href="/comments/<%= comment.id%>/edit">Edit Comment</a>
   <% end %>
-</section>
