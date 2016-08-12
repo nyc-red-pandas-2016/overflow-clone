@@ -243,15 +243,17 @@ margin-left: 30px;
   margin-top: 15px;
 }
 
+
+
 /* Edit Comment Page Layout */
 .edit_comment{
-  margin: 10% auto;
-  width: 600px;
-  padding: 20px 20px 20px 20px;
+  width: 500px;
+  margin: auto;
 }
 
-.edit_comment form {
-    padding: 20px 20px 20px 20px;
+form{
+  position: absolute;
+  top: 100px;
 }
 
 .edit_comment textarea {
@@ -269,18 +271,23 @@ margin-left: 30px;
   margin-top: 15px;
 }
 
+
+
+
 /*Question Page Layout*/
+
+.question_page_container{
+    display: block;
+}
 section#question_display {
     padding: 20px 20px;
 }
 
-/*section#comment_question {
-    padding: 20px 20px;
-    float: right;
-}*/
-
 section#question {
     padding: 20px 20px;
+    display: block;
+    position: static;
+    margin-top: 10%;
 }
 
 section#display{
@@ -289,47 +296,94 @@ section#display{
 
 section.comment_question{
    margin-left: 8%;
+   border: solid black 1px;
 }
 
-#display_comments{
-  margin-left: 8%;
+section#display_comments{
+  border: solid black 1px;
+  margin: 30px;
+  min-height: 90px;
+  display: inline-flex;
+  position: relative;
+  width: 95%;
+}
+
+p#content{
+
+  margin-top: 0;
+  min-height: 90px;
+  width:70%;
+
+}
+
+p#by{
+  float: right;
+  margin-right: 5px;
+  margin-top: 0;
+  border: solid;
+  width: 23%;
+  min-height: 90px;
+}
+
+
+
+/* Comment Edit and Delete Bar*/
+#edit_delete{
+  display: inline-flex;
+  padding: 5px 5px;
+  position: absolute;
+  bottom: 0;
+  left: 47px;
 }
 
 form.delete{
   margin-left: inherit;
+  border: none;
+  background-color: none;
 }
 
 p#edit{
   margin-left: inherit;
+  margin-top: initial;
+  padding: 5px 5px;
 }
+
+p#edit a{
+  border: solid black;
+}
+
+
 /*Votes Buttons*/
 #votes{
   float: left;
   margin-top: 1em;
   margin-left: 2em;
 }
-
 #votes input[id="+1"] {
   background-image: url("https://openclipart.org/image/2400px/svg_to_png/192852/thumbs-up-right.png"),none;
   background-size: 100%;
   background-repeat: no-repeat;
   background-color: none;
-  width: 2em;
-  height: 2.9em;
+  width: 1.5em;
+  height: 2em;
   display: block;
+  margin-bottom: 2em;
 }
 #votes input[id="-1"] {
   background-image: url("http://www.clipartkid.com/images/47/thumbs-down-by-savanaprice-pIFdcY-clipart.png"),none;
   background-size: 100%;
   background-repeat: no-repeat;
   background-color: none;
-  width: 2em;
-  height: 2.9em;
+  width: 1.5em;
+  height: 2em;
   display: block;
 }
 
-/*Profile Page*/
 
+
+
+
+/*Profile Page*/
 #profile-header {
   margin-top: 5% auto;
  /* background-color: black;
@@ -667,3 +721,64 @@ FOOTER
   border-top: 1px dotted #d9d9d9;
   margin-left: 100px;
 }
+
+
+
+section#question_{
+  min-height: 90px;
+  display: inline-flex;
+  position: relative;
+  width: 95%;
+
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #9d9e9e;
+  text-shadow: 1px 1px 0 rgba(256,256,256,1.0);
+
+  background: #fff;
+  border: 1px solid #fff;
+  border-radius: 5px;
+
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.50);
+  -moz-box-shadow: inset 0 1px 3px rgba(0,0,0,0.50);
+  -webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,0.50);
+}
+
+span.point_val {
+    margin-left: -2em;
+    position: absolute;
+    margin-top: 1.5em;
+}
+#user{
+
+}
+
+#image img{
+  height: 60px;
+  width: 60px;
+  margin-left: 3em;
+}
+
+/* Edit Comment Page Layout */
+.edit_comment{
+  width: 500px;
+  margin: auto;
+}
+
+.edit_comment textarea {
+    max-width: 100%;
+    height: 200px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.edit_comment label {
+  padding: 5px 5px;
+}
+
+.edit_comment input[type="submit"] {
+  margin-top: 15px;
+}
+
+
