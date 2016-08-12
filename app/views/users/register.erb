@@ -1,16 +1,54 @@
 <% @user = User.new() unless @user %>
 
-<div class="container">
-  <h1>Register New User</h1>
-  <form action="/users" method="post" id="register-form">
-    <label for="user[username]">Username:</label>
-    <input type="text" name="user[username]" placeholder="username" value="<%= @user.username %>" id="username-input">
-    <label for="user[email]">Email:</label>
-    <input type="text" name="user[email]" placeholder="email" value="<%= @user.email %>" id="email-input">
-    <label for="user[password]">Password:</label>
-    <input type="password" name="user[password]" placeholder="password" id="password-input">
-    <input type="submit" value="Register">
+
+<div class="container" id="wrapper" >
+  <form class="login-form" action="/users" method="post" id="login-form register-form">
+
+    <!-- Header -->
+    <div class="header">
+      <h1>Register:</h1>
+      <span>Please fill out the informaiton below to register!</span>
+    </div>
+
+    <!-- Username -->
+    <div class="content">
+      <div>
+        <input class="input username" type="text" name="user[username]" placeholder="username" value="<%= @user.username %>" id="username-input">
+      <div class="user-icon"></div>
+    </div>
+
+    <!-- Email -->
+    <div class="content">
+      <div>
+        <input class="input username" type="text" name="user[email]" placeholder="email" value="<%= @user.email %>" id="email-input">
+      <div class="email-icon"></div>
+    </div>
+
+    <!-- Password -->
+    <div>
+      <input class="input password" type="password" name="user[password]" placeholder="password">
+      <div class="pass-icon"></div>
+    </div>
+    <!-- </div> -->
+
+    <!-- Footer/Button -->
+    <div class="footer">
+      <input type="submit" value="Register" class="button">
+    </div>
+
   </form>
+
+<!-- <div class="container" id="wrapper"> -->
+  <!-- <h1>Register New User</h1> -->
+  <!-- <form action="/users" method="post" id="login-form register-form"> -->
+    <!-- <label for="user[username]">Username:</label> -->
+    <!-- <input type="text" name="user[username]" placeholder="username" value="<%= @user.username %>" id="username-input"> -->
+    <!-- <label for="user[email]">Email:</label> -->
+    <!-- <input type="text" name="user[email]" placeholder="email" value="<%= @user.email %>" id="email-input"> -->
+    <!-- <label for="user[password]">Password:</label> -->
+    <!-- <input type="password" name="user[password]" placeholder="password" id="password-input"> -->
+    <!-- <input type="submit" value="Register"> -->
+  <!-- </form> -->
 
   <ul id="register-errors">
     <% if @errors %>
@@ -20,3 +58,5 @@
     <% end %>
   </ul>
 </div>
+
+

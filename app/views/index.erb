@@ -10,8 +10,8 @@
         <ul>
           <li><img src="<%= Faker::Avatar.image %>"></li>
           <li> <%= question.votes.pluck("point_value").sum %> Votes</li>
-          <li> <%= question.comments.count %> Comments</li>
           <li> <%= question.answers.count %> Answers</li>
+          <li> <%= question.comments.count %> Comments</li>
         </ul>
       </div>
       <div class="title-content">

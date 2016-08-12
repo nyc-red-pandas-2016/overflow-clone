@@ -14,12 +14,14 @@ p {
 
 .title-content {
   float: left;
-  max-width: 300px;
+  max-width: 500px;
+  padding-left: 15px;
+  padding-top: 5px;
 }
 
 .content  {
   margin: 5% auto;
-  width: 600px;
+  width: 800px;
   padding: 20px 20px 20px 20px;
   /*border: 1px dotted black;*/
 }
@@ -27,6 +29,7 @@ p {
 .content .questions{
   list-style-type: none;
   padding: 0;
+
 }
 
 .content .question {
@@ -53,6 +56,9 @@ p {
   list-style-type: none;
   padding: 0px;
   border-right: 1px black dotted;
+  display: block;
+  text-align:center;
+  margin-bottom: 5px;
 }
 
 .attributes img {
@@ -67,6 +73,8 @@ p {
 
 .tags ul {
   list-style-type: none;
+  border-top: 1px dotted black;
+  /*float: left;*/
   /*list-style-position: horizt*/
 }
 
@@ -75,10 +83,10 @@ p {
   float: left;
   margin-right: 13px;
   margin-top: 10px;
-  border: solid 1px grey;
   padding: 4px;
-  background: rgb(176,176,176);
   border-radius: 5px;
+  border: solid 1px grey;
+  color: black;
 }
 
 .tags li:hover {
@@ -521,6 +529,11 @@ CONTENT
 .pass-icon {
   top:201px;
   background: rgba(65,72,72,0.75) url(http://www.demo.amitjakhu.com/login-form/images/pass-icon.png) no-repeat center;
+}
+
+.email-icon {
+  top: 248px;
+  background: rgba(65,72,72,0.75) url() no-repeat center;
 }
 
 .content input:focus + div{
