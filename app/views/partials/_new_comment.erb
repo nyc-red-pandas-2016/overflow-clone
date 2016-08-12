@@ -1,11 +1,13 @@
 <%= erb :'partials/vote_form', locals: { object_id: comment.id, votable_type: "Comment", question_id: question.id } %>
 
-<p><%= comment.content %></p>
-<p>Written by: <a href="/users/<%= comment.user_id %>"><%= comment.user.username %></a></p>
-<% if current_user && current_user.id == comment.user_id %>
-<form class="delete" method="POST" action="/comments/<%=comment.id %>">
-<input type="hidden" name="_method" value="delete">
-<input type="submit" value="delete">
-</form>
-<a href="/comments/<%= comment.id%>/edit">Edit Comment</a>
-<% end %>
+<section id="display_comments">
+  <p><%= comment.content %></p>
+  <p>Written by: <a href="/users/<%= comment.user_id %>"><%= comment.user.username %></a></p>
+  <% if current_user && current_user.id == comment.user_id %>
+    <form class="delete" method="POST" action="/comments/<%=comment.id %>">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="delete">
+    </form>
+    <a href="/comments/<%= comment.id%>/edit">Edit Comment</a>
+  <% end %>
+</section>

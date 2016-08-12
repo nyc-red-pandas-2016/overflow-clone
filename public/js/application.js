@@ -56,7 +56,7 @@ $(document).ready(function() {
     });
   });
 
-    //append comment to appropriate container for question - kind of broken (remove white space)
+    //append comment to appropriate container for question - working
 
     $('#question').on('submit', ".comment_form", function(e){
     e.preventDefault();
@@ -69,6 +69,7 @@ $(document).ready(function() {
     })
     .done(function(response){
       $('.comment_question').append(response)
+      $('.new_comment').remove();
     })
   });
 
