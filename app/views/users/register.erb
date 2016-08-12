@@ -4,19 +4,19 @@
   <h1>Register New User</h1>
   <form action="/users" method="post" id="register-form">
     <label for="user[username]">Username:</label>
-    <input type="text" name="user[username]" placeholder="username" value="<%= @user.username %>">
+    <input type="text" name="user[username]" placeholder="username" value="<%= @user.username %>" id="username-input">
     <label for="user[email]">Email:</label>
-    <input type="text" name="user[email]" placeholder="email" value="<%= @user.email %>">
+    <input type="text" name="user[email]" placeholder="email" value="<%= @user.email %>" id="email-input">
     <label for="user[password]">Password:</label>
-    <input type="password" name="user[password]" placeholder="password">
+    <input type="password" name="user[password]" placeholder="password" id="password-input">
     <input type="submit" value="Register">
   </form>
 
-  <% if @errors %>
-    <ul>
+  <ul id="register-errors">
+    <% if @errors %>
       <% @errors.each do |error| %>
         <li><%= error %></li>
       <% end %>
-    </ul>
-  <% end %>
+    <% end %>
+  </ul>
 </div>
