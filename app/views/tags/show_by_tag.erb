@@ -1,0 +1,21 @@
+<div class="container">
+ <section class="content">
+
+ <h1>Questions Marked with "<%= @tag.name.capitalize %>"</h1>
+
+  <ul class="questions">
+    <% @questions.each do |question| %>
+    <li class="question">
+      <a href="/questions/<%=question.id%>"><%= question.title %></a>
+      <ul class="attributes">
+        <li>By: <%= question.user.username %></li>
+        <li>Votes: <%= question.votes.pluck("point_value").sum %></li>
+        <li>Comments: <%= question.comments.count %></li>
+      </ul>
+      <p><%= question.content %></p>
+    </li>
+    <% end %>
+  </ul>
+  
+</section>
+</div>
