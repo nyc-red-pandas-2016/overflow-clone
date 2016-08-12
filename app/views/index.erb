@@ -2,18 +2,33 @@
  <section class="content">
 
 
-
   <ul class="questions">
     <% @questions.each do |question| %>
-    <li class="question">
-      <a href="/questions/<%=question.id%>"><%= question.title %></a>
-      <ul class="attributes">
-        <li>By: <%= question.user.username %></li>
-        <li>Votes: <%= question.votes.pluck("point_value").sum %></li>
-        <li>Comments: <%= question.comments.count %></li>
+    <div class="question">
+    <li>
+      <div class="attributes">
+        <ul>
+          <li><img src="<%= Faker::Avatar.image %>"></li>
+          <li> <%= question.votes.pluck("point_value").sum %> Votes</li>
+          <li> <%= question.comments.count %> Comments</li>
+          <li> <%= question.answers.count %> Answers</li>
+        </ul>
+      </div>
+      <div class="title-content">
+        <a href="/questions/<%=question.id%>"><%= question.title %></a>
+        <p>By: <%= question.user.username %></p>
+        <p><%= question.content %></p>
+      </div>
+      <div class="tags">
+      <ul>
+        <% question.tags.each do |tag| %>
+          <li><a href="/tags/<%= tag.id %>"><%= tag.name %></a></li>
+        <% end %>
       </ul>
-      <p><%= question.content %></p>
+    </div>
+
     </li>
+  </div>
     <% end %>
   </ul>
 
