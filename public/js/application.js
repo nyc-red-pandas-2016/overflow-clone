@@ -177,4 +177,15 @@ $(document).ready(function() {
     })
 
   })
+
+   $('.question_page_container').on("click", ".edit", function(e){
+    e.preventDefault();
+    $.ajax({
+      type: "GET",
+      url: $(e.target).attr('href')
+    })
+    .done(function(response){
+      $(e.target).append(response)
+    })
+   })
 });
