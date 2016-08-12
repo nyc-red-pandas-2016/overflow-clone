@@ -44,7 +44,7 @@ $(document).ready(function() {
 
   //show answer comment form
 
-  $(".add_answer_comment").on("click", function(e){
+  $(".best-answer-display").on("click", ".add_answer_comment", function(e){
     e.preventDefault();
     $(this).hide();
     $.ajax({
@@ -78,6 +78,7 @@ $(document).ready(function() {
   $('.best-answer-display').on('submit',".comment_form", function(e){
     e.preventDefault();
     $(this).hide();
+    debugger;
     $('.add_answer_comment, .add_question_comment').show();
     $.ajax({
       type: "POST",
@@ -85,7 +86,8 @@ $(document).ready(function() {
       data: $(this).serialize()
     })
     .done(function(response){
-      $(e.target).parent().parent().find('.comment-container').append(response)
+      $(e.target).parent().parent().find('.comment-container').append(response);
+      $(e.target).parent().parent().find('.new_comment').remove();
     })
   });
 
