@@ -434,12 +434,18 @@ LOGIN FORM
   -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
+.login-form #register-errors {
+  display: inline-table;
+  color: black;
+  padding: 0;
+}
+
 /*******************
 HEADER
 *******************/
 
 .login-form .header {
-  padding: 40px 30px 30px 30px;
+  padding: 40px 30px 0px 30px;
 }
 
 .login-form .header h1 {
