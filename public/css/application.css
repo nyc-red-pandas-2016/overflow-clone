@@ -306,6 +306,8 @@ p#edit{
 
 #profile-header {
   margin-top: 5% auto;
+ /* background-color: black;
+  width: 80%;*/
 }
 
 #profile-header h1{
@@ -318,8 +320,10 @@ p#edit{
 #profile-header p{
   display: inline;
   position: absolute;
-  margin-top: 8%;
-  margin-left: 9.5%;
+  /*margin-top: 8%;
+  margin-left: 9.5%;*/
+  top: 155px;
+  left: 519px;
 }
 
 #profile-header img {
@@ -330,6 +334,13 @@ p#edit{
 
 .tab-content {
     display: none;
+    background-color: #F0F0F0;
+    position: absolute;
+    top: 485px;
+    left: 60px;
+    border-radius: 0px 0px 5px 5px;
+    padding: 20px;
+    color: black ;
 }
 
 
@@ -346,6 +357,8 @@ p#edit{
     padding: 10px 15px;
     height: 30px;
     line-height: 30px;
+    background-color: #F0F0F0;
+    border-radius: 5px 5px 0 0;
 }
 .tabs li a {
     color: #666;
