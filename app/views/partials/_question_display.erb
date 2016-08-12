@@ -10,7 +10,7 @@
         <p><a class="add_question_comment" href="/questions/<%= question.id %>/comments/new">Add Comment</a></p>
 
         <% if current_user && current_user.id == question.user_id %>
-          <form class="delete" method="POST" action="/questions/<%= question.id %>">
+          <form class="question-delete" method="POST" action="/questions/<%= question.id %>">
             <input type="hidden" name="_method" value="delete">
             <input type="submit" value="delete">
           </form>
