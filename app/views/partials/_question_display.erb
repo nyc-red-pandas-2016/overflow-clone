@@ -6,7 +6,8 @@
         <section id= "display">
         <p><%=question.content%></p>
         <p>Asked by: <a href="/users/<%=question.user_id%>"><%=question.user.username%></a></p>
-        <p>Points: <%=question.votes.pluck("point_value").sum %></p>
+
+        <p class="points">Points: <span class="point_val"><%=question.votes.pluck("point_value").sum %></span></p>
 
         <h3 class="tag-list-header">Tags:</h3>
         <ul class="tags-list">
@@ -14,6 +15,7 @@
             <li><a href="/tags/<%= tag.id %>"><%= tag.name %></a></li>
           <% end %>
         </ul>
+
 
         <p><a class="add_question_comment" href="/questions/<%= question.id %>/comments/new">Add Comment</a></p>
 
