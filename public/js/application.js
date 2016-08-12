@@ -188,7 +188,7 @@ $(document).ready(function() {
       url: $(e.target).attr('href')
     })
     .done(function(response){
-      debugger;
+      // debugger;
       $(e.target).parent().append(response)
     })
    })
@@ -206,19 +206,18 @@ $(document).ready(function() {
   //   })
   // })
 
-  $('.answer-display').on('submit','.edit_answer', function(e){
-    e.preventDefault();
-    debugger;
-
-    $.ajax({
-      type: "PUT",
-      url: $(e.target).attr('action'),
-      data: $(e.target).serialize()
-    })
-    .done(function(response){
-      $(edit_answer).html(response)
-    })
-  })
+  // $('.answer-display').on('submit','.edit_answer', function(e){
+  //   e.preventDefault();
+  //   var edit_answer = $(e.target).parent()
+  //   $.ajax({
+  //     type: "PUT",
+  //     url: $(e.target).attr('action'),
+  //     data: $(e.target).serialize()
+  //   })
+  //   .done(function(response){
+  //     $(edit_answer).html(response)
+  //   })
+  // })
 
   // $('.edit_comment').on('submit', function(e){
   //   e.preventDefault();
