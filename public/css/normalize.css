@@ -73,7 +73,9 @@ html {
 
 body {
     margin: 0;
-    background-color: #E0E0E0 ;
+    /*background-color: #E0E0E0 ;*/
+    background: #3498db; color: #fff;
+    /*background: #34495e; color: rgba(255, 255, 255, 0.5);*/
 }
 
 /* ==========================================================================
