@@ -31,7 +31,11 @@ end
 put '/answers/:id' do
   @answer = Answer.find(params[:id])
   @answer.update(params[:answer])
-  redirect "/questions/#{@answer.question_id}"
+    if request.xhr?
+      erb :'/partials/_new_answer', layout: false, locals: {answer: @answer, question: @answer.question}
+    else
+      redirect "/questions/#{@answer.question_id}"
+    end
 end
 
 put '/answer/:id/best' do

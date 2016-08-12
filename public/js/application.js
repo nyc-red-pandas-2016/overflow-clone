@@ -188,44 +188,47 @@ $(document).ready(function() {
       url: $(e.target).attr('href')
     })
     .done(function(response){
-      $(e.target).append(response)
+      debugger;
+      $(e.target).parent().append(response)
     })
    })
 
 //submit edit for question
-  $('.edit_question').on('submit', function(e){
+  // $('.edit_question').on('submit', function(e){
+  //   e.preventDefault();
+  //   $.ajax({
+  //     type: "PUT",
+  //     url: $(e.target).attr('action'),
+  //     data: $(e.target).serialize()
+  //   })
+  //   .done(function(response){
+  //     $(edit_question).html(response)
+  //   })
+  // })
+
+  $('.answer-display').on('submit','.edit_answer', function(e){
     e.preventDefault();
+    debugger;
+
     $.ajax({
       type: "PUT",
       url: $(e.target).attr('action'),
       data: $(e.target).serialize()
     })
     .done(function(response){
-
+      $(edit_answer).html(response)
     })
   })
 
-  $('.edit_answer').on('submit', function(e){
-    e.preventDefault();
-    $.ajax({
-      type: "PUT",
-      url: $(e.target).attr('action'),
-      data: $(e.target).serialize()
-    })
-    .done(function(response){
-
-    })
-  })
-
-  $('.edit_comment').on('submit', function(e){
-    e.preventDefault();
-    $.ajax({
-      type: "PUT",
-      url: $(e.target).attr('action'),
-      data: $(e.target).serialize()
-    })
-    .done(function(response){
-
-    })
-  })
+  // $('.edit_comment').on('submit', function(e){
+  //   e.preventDefault();
+  //   $.ajax({
+  //     type: "PUT",
+  //     url: $(e.target).attr('action'),
+  //     data: $(e.target).serialize()
+  //   })
+  //   .done(function(response){
+  //     $(edit_comment).html(response)
+  //   })
+  // })
 });
