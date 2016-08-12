@@ -76,7 +76,7 @@ $(document).ready(function() {
 
   //append comment to appropriate container for answer - working
 
-  $('.best-answer-display').on('submit',".comment_form", function(e){
+  $('.best-answer-display').on('submit', ".comment_form", function(e){
     e.preventDefault();
     $(this).hide();
     $('.add_answer_comment, .add_question_comment').show();
@@ -86,7 +86,7 @@ $(document).ready(function() {
       data: $(this).serialize()
     })
     .done(function(response){
-      $(e.target).parent().parent().find('.comment-container').append(response);
+      $(e.target).parent().parent().parent().find('.comment-container').append(response);
       $(e.target).parent().parent().find('.new_comment').remove();
     })
   });
@@ -137,6 +137,7 @@ $(document).ready(function() {
     .fail(function(response) {
       $('.tag-question').find('#tag-input').val("");
     });
+  });
 
   $('.question_page_container').on("submit",'.vote_buttons', function(e){
     e.preventDefault();
