@@ -1,5 +1,8 @@
 <div class="container">
  <section class="content">
+
+
+
   <ul class="questions">
     <% @questions.each do |question| %>
     <li class="question">
@@ -7,12 +10,14 @@
       <ul class="attributes">
         <li>By: <%= question.user.username %></li>
         <li>Votes: <%= question.votes.pluck("point_value").sum %></li>
-        <li>Comments: <%= question.comments.count %>
+        <li>Comments: <%= question.comments.count %></li>
       </ul>
       <p><%= question.content %></p>
     </li>
     <% end %>
   </ul>
+
+
   <a class="ask_question" href="/questions/new">Ask a Question</a>
 </section>
 </div>
