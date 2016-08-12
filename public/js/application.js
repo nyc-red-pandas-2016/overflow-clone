@@ -78,7 +78,6 @@ $(document).ready(function() {
   $('.best-answer-display').on('submit',".comment_form", function(e){
     e.preventDefault();
     $(this).hide();
-    debugger;
     $('.add_answer_comment, .add_question_comment').show();
     $.ajax({
       type: "POST",
