@@ -1,6 +1,8 @@
-<%= erb :'partials/vote_form', locals: { object_id: comment.id, votable_type: "Comment", question_id: question.id } %>
 
 <section id="display_comments">
+
+<%= erb :'partials/vote_form', locals: { object_id: comment.id, votable_type: "Comment", question_id: question.id } %>
+
   <p><%= comment.content %></p>
   <p>Written by: <a href="/users/<%= comment.user_id %>"><%= comment.user.username %></a></p>
   <% if current_user && current_user.id == comment.user_id %>
