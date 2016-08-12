@@ -26,10 +26,19 @@ p {
   /*border: 1px dotted black;*/
 }
 
-.content .questions{
+.content .questions {
   list-style-type: none;
   padding: 0;
 
+}
+#user-box {
+    list-style-type: none;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    margin: 275px 0px 20px -450px;
+    width: 80%;
 }
 
 .content .question {
@@ -251,10 +260,10 @@ margin-left: 30px;
   margin: auto;
 }
 
-form{
+/*form{
   position: absolute;
   top: 100px;
-}
+}*/
 
 .edit_comment textarea {
     max-width: 100%;

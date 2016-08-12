@@ -3,34 +3,33 @@
         <p><%= erb :'partials/vote_form', locals: { object_id: question.id, votable_type: "Question", question_id: question.id } %></p>
 
 <div class="container">
- <section class="content">
-  <ul class="questions">
-     <div class="question">
-    <li>
-      <div class="attributes">
-        <ul>
-          <li><img src="<%= Faker::Avatar.image %>"></li>
-          <li> <%= question.votes.pluck("point_value").sum %> Votes</li>
-          <li> <%= question.answers.count %> Answers</li>
-          <li> <%= question.comments.count %> Comments</li>
-        </ul>
-      </div>
-      <div class="title-content">
-        <a href="/questions/<%=question.id%>"><%= question.title %></a>
-        <p>By: <%= question.user.username %></p>
-        <p><%= question.content %></p>
-      </div>
-      <div class="tags">
-      <ul>
-        <% question.tags.each do |tag| %>
+  <section class="content">
+    <ul class="questions">
+      <div class="question" id="user-box" >
+        <li>
+          <div class="attributes">
+            <ul>
+              <li><img src="<%= Faker::Avatar.image %>"></li>
+              <li> <%= question.votes.pluck("point_value").sum %> Votes</li>
+              <li> <%= question.answers.count %> Answers</li>
+              <li> <%= question.comments.count %> Comments</li>
+            </ul>
+        </div>
+        <div class="title-content">
+          <a href="/questions/<%=question.id%>"><%= question.title %></a>
+          <p>By: <%= question.user.username %></p>
+          <p><%= question.content %></p>
+        </div>
+        <div class="tags">
+          <ul>
+            <% question.tags.each do |tag| %>
           <li><a href="/tags/<%= tag.id %>"><%= tag.name %></a></li>
-        <% end %>
-      </ul>
+            <% end %>
+          </ul>
+        </div>
+      </li>
     </div>
-
-    </li>
-  </div>
-</ul>
+  </ul>
 </section>
 </div>
 
