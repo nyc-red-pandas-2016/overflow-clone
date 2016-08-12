@@ -12,9 +12,16 @@ p {
   padding: 0px 20px 20px 20px;
 }
 
+.title-content {
+  float: left;
+  max-width: 500px;
+  padding-left: 15px;
+  padding-top: 5px;
+}
+
 .content  {
   margin: 5% auto;
-  width: 600px;
+  width: 800px;
   padding: 20px 20px 20px 20px;
   /*border: 1px dotted black;*/
 }
@@ -22,35 +29,116 @@ p {
 .content .questions{
   list-style-type: none;
   padding: 0;
+
 }
 
 .content .question {
   margin: 20px 0px 20px 0px;
   padding: 5px 5px 5px 5px;
-  background: linear-gradient(#E0E0E0, #FFFFFF);
+  background-color: #F0F0F0;
   border-radius: 5px;
   color:black;
+  border-top: solid black 15px;
 
+  position: relative;
 
   -webkit-box-shadow: 2px 4px 45px 1px rgba(0,0,0,0.67);
   -moz-box-shadow: 2px 4px 45px 1px rgba(0,0,0,0.67);
   box-shadow: 2px 4px 45px 1px rgba(0,0,0,0.67);
 }
 
-.content a {
+.attributes {
+  float: left;
+  width: 20%;
+}
+
+.attributes ul {
+  list-style-type: none;
+  padding: 0px;
+  border-right: 1px black dotted;
+  display: block;
+  text-align:center;
+  margin-bottom: 5px;
+}
+
+.attributes img {
+  height: 60px;
+  width: 60px;
+}
+
+.tags {
+  clear: both;
+  overflow: hidden;
+}
+
+.tags ul {
+  list-style-type: none;
+  border-top: 1px dotted black;
+  /*float: left;*/
+  /*list-style-position: horizt*/
+}
+
+.tags li {
+  display: inline;
+  float: left;
+  margin-right: 13px;
+  margin-top: 10px;
+  padding: 4px;
+  border-radius: 5px;
+  border: solid 1px grey;
+  color: black;
+}
+
+.tags li:hover {
+  background: white;
+}
+
+
+
+
+/*.content .question ul{
+  list-style-type: none;
+}*/
+
+/*.content .question .tags li{
+  float: left;
+  margin-right: 13px;
+  margin-top: 10px;
+  border: solid 1px grey;
+  padding: 4px;
+  background: rgb(176,176,176);
+}*/
+
+/*.content a {
  display: block;
  color: black;
-}
+}*/
 
-.attributes{
+/*.attributes{
   list-style-type: none;
   display: inline-flex;
-}
+  padding-left: 0;
+}*/
 
-.attributes li {
+/*.attributes ul {
+  list-style-type: none;
+}*/
+
+
+/*.attributes li {
   padding-left: 5px;
   padding-right: 5px;
-}
+  font-size: 12px;
+  color: #909090;
+  /*border-right: solid #909090 2px;*/
+}*/
+
+/*.statscontainer {
+  width: 78px;
+  float: left;
+  margin-right: 8px;
+  margin-left: 8px;
+}*/
 
 /*Navigation Bar layout*/
 nav{
@@ -67,6 +155,8 @@ nav{
   top: 0px;
   display: inline-flex;
   padding: 0px 5px 0px 5px;
+  border-bottom: solid black 1px;
+  z-index: 1;
 }
 
 .navigation h1 {
@@ -439,6 +529,11 @@ CONTENT
 .pass-icon {
   top:201px;
   background: rgba(65,72,72,0.75) url(http://www.demo.amitjakhu.com/login-form/images/pass-icon.png) no-repeat center;
+}
+
+.email-icon {
+  top: 248px;
+  background: rgba(65,72,72,0.75) url() no-repeat center;
 }
 
 .content input:focus + div{
