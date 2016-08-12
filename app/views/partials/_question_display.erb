@@ -7,6 +7,14 @@
         <p><%=question.content%></p>
         <p>Asked by: <a href="/users/<%=question.user_id%>"><%=question.user.username%></a></p>
         <p>Points: <%=question.votes.pluck("point_value").sum %></p>
+
+        <h3 class="tag-list-header">Tags:</h3>
+        <ul class="tags-list">
+          <% @question.tags.each do |tag| %>
+            <li><a href="/tags/<%= tag.id %>"><%= tag.name %></a></li>
+          <% end %>
+        </ul>
+
         <p><a class="add_question_comment" href="/questions/<%= question.id %>/comments/new">Add Comment</a></p>
 
         <% if current_user && current_user.id == question.user_id %>
@@ -15,6 +23,12 @@
             <input type="submit" value="delete">
           </form>
           <p><a href="/questions/<%= question.id %>/edit">Edit</a></p>
+          <form class="tag-question" method="POST" action="/question_tags">
+            <label for="tag[name]">Add Tag:</label>
+            <input type="hidden" name="question[id]" value="<%= question.id %>">
+            <input id="tag-input" type="text" name= "tag[name]">
+            <input type="submit" value="Add Tag">
+          </form>
         <% end %>
         </section>
   <!--     </section> -->

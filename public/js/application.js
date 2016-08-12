@@ -120,4 +120,21 @@ $(document).ready(function() {
       $('.best-answer-display').append(response)
     })
   })
+
+  // Add tag to question
+
+  $('.tag-question').on('submit', function(e) {
+    e.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: $(e.target).attr('action'),
+      data: $(e.target).serialize()
+    }).done(function(response){
+      $('.tags-list').append(response)
+      $('.tag-question').find('#tag-input').val("");
+    })
+    .fail(function(response) {
+      $('.tag-question').find('#tag-input').val("");
+    });
+  })
 });

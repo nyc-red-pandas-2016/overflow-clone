@@ -31,13 +31,16 @@
       <% if logged_in? %>
       <li><a href="/users/<%= current_user_id %>">Profile</a></li>
       <li><a href="/users/logout"> Logout </a></li>
-
-      <li>Welcome, <%= current_username %>!</li>
       <% else %>
       <li><a href="/users/new"> Register </a></li>
       <li><a href="/users/login"> Login </a></li>
       <% end %>
       </ul>
+      <form action="/tags/search_by_name" method="post">
+        <input type="hidden" name="_method" value="put">
+        <input type="text" name="tag_name" placeholder="Search by tag">
+        <input type="submit" value="Search">
+      </form>
     </nav>
   </div>
   <%= yield %>
