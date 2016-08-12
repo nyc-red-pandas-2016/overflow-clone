@@ -25,7 +25,7 @@
         <input type="hidden" class="id-to-delete" value="<%= answer.id %>">
         <input type="submit" value="delete">
       </form>
-    <a href="/answers/<%= answer.id %>/edit">Edit</a>
+    <a class="edit" href="/answers/<%= answer.id %>/edit">Edit</a>
     <% end %>
     </div>
     <section class="comment-container">
@@ -42,7 +42,7 @@
                 <input type="hidden" class="id-to-delete" value="<%= comment.id %>">
                 <input type="submit" value="delete">
                 </form>
-                <a href="/comments/<%= comment.id%>/edit">Edit Comment</a>
+                <a class="edit" href="/comments/<%= comment.id%>/edit">Edit Comment</a>
               <% end %>
               <p class="points">Points: <span class="point_val">
               <%= comment.votes.pluck("point_value").sum %></span></p>

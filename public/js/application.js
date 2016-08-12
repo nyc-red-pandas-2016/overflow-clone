@@ -101,8 +101,9 @@ $(document).ready(function() {
         data: $(this).find('.id-to-delete').val()
       })
       .done(function(response) {
-        $(e.target).parent().empty();
-        $(e.target).remove();
+        // debugger;
+        $(e.target).parent().parent().empty();
+        $(e.target).parent().remove();
       })
     })
 
@@ -123,7 +124,7 @@ $(document).ready(function() {
     })
   })
 
-
+//submit tag
   $('.tag-question').on('submit', function(e) {
     e.preventDefault();
     $.ajax({
@@ -139,6 +140,8 @@ $(document).ready(function() {
     });
   });
 
+  })
+//submit vote for question
   $('.question_page_container').on("submit",'.vote_buttons', function(e){
     e.preventDefault();
     points = $(e.target).parent().parent().find('.point_val')
@@ -151,7 +154,7 @@ $(document).ready(function() {
       $(points).html(response)
     })
   })
-
+//submit vote for answer
   $('.answer-display').on("submit",'.vote_buttons', function(e){
     e.preventDefault();
     points = $(e.target).parent().parent().find('.point_val')
@@ -164,7 +167,7 @@ $(document).ready(function() {
       $(points).html(response)
     })
   })
-
+//submit vote for comment
    $('.comment-container').on("submit",'.vote_buttons', function(e){
     e.preventDefault();
     points = $(e.target).parent().parent().find('.point_val')
@@ -176,9 +179,8 @@ $(document).ready(function() {
     .done(function(response){
       $(points).html(response)
     })
-
   })
-
+//get edit form
    $('.question_page_container').on("click", ".edit", function(e){
     e.preventDefault();
     $.ajax({
@@ -186,7 +188,46 @@ $(document).ready(function() {
       url: $(e.target).attr('href')
     })
     .done(function(response){
-      $(e.target).append(response)
+      // debugger;
+      $(e.target).parent().append(response)
     })
    })
+
+//submit edit for question
+  // $('.edit_question').on('submit', function(e){
+  //   e.preventDefault();
+  //   $.ajax({
+  //     type: "PUT",
+  //     url: $(e.target).attr('action'),
+  //     data: $(e.target).serialize()
+  //   })
+  //   .done(function(response){
+  //     $(edit_question).html(response)
+  //   })
+  // })
+
+  // $('.answer-display').on('submit','.edit_answer', function(e){
+  //   e.preventDefault();
+  //   var edit_answer = $(e.target).parent()
+  //   $.ajax({
+  //     type: "PUT",
+  //     url: $(e.target).attr('action'),
+  //     data: $(e.target).serialize()
+  //   })
+  //   .done(function(response){
+  //     $(edit_answer).html(response)
+  //   })
+  // })
+
+  // $('.edit_comment').on('submit', function(e){
+  //   e.preventDefault();
+  //   $.ajax({
+  //     type: "PUT",
+  //     url: $(e.target).attr('action'),
+  //     data: $(e.target).serialize()
+  //   })
+  //   .done(function(response){
+  //     $(edit_comment).html(response)
+  //   })
+  // })
 });
