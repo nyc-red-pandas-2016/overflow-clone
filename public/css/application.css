@@ -27,8 +27,11 @@ p {
 .content .question {
   margin: 20px 0px 20px 0px;
   padding: 5px 5px 5px 5px;
-  background-color: white;
+  background: linear-gradient(#E0E0E0, #FFFFFF);
   border-radius: 5px;
+  color:black;
+
+
   -webkit-box-shadow: 2px 4px 45px 1px rgba(0,0,0,0.67);
   -moz-box-shadow: 2px 4px 45px 1px rgba(0,0,0,0.67);
   box-shadow: 2px 4px 45px 1px rgba(0,0,0,0.67);
@@ -36,6 +39,7 @@ p {
 
 .content a {
  display: block;
+ color: black;
 }
 
 .attributes{
