@@ -100,14 +100,14 @@ $(document).ready(function() {
         data: $(this).find('.id-to-delete').val()
       })
       .done(function(response) {
-        $(e.target).parent().parent().empty();
-        $(e.target).parent().remove();
+        $(e.target).parent().empty();
+        $(e.target).remove();
       })
     })
 
 
   //submit answer to question
-  
+
   $('#post-answer').on("submit", function(e){
     e.preventDefault();
     $.ajax({

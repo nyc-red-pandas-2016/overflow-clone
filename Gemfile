@@ -1,4 +1,4 @@
-ruby '2.2.5'
+ruby '2.2.3'
 source 'https://rubygems.org'
 
 # PostgreSQL driver
