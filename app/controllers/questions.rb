@@ -45,5 +45,9 @@ end
 put '/questions/:id' do
   @question = Question.find(params[:id])
   @question.update(params[:question])
-  redirect "/questions/#{@question.id}"
+    if request.xhr?
+
+    else
+      redirect "/questions/#{@question.id}"
+    end
 end

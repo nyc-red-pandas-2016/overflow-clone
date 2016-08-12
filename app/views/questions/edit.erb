@@ -1,4 +1,4 @@
-<form method = "POST" action = "/questions/<%= @question.id %>">
+<form class = "edit_question" method = "POST" action = "/questions/<%= @question.id %>">
   <input type="hidden" name="_method" value="put">
   <label for="Title">Title: </label>
   <input type="text" name="question[title]" value="<%= @question.title %>">
