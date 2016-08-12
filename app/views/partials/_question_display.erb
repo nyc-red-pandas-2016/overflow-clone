@@ -1,13 +1,37 @@
-
-
 <section id="question">
       <h2 id="question-header"><%=question.title%></h2>
         <p><%= erb :'partials/vote_form', locals: { object_id: question.id, votable_type: "Question", question_id: question.id } %></p>
-        <section id= "display">
-        <p><%=question.content%></p>
-        <p>Asked by: <a href="/users/<%=question.user_id%>"><%=question.user.username%></a></p>
 
-        <p class="points">Points: <span class="point_val"><%=question.votes.pluck("point_value").sum %></span></p>
+<div class="container">
+  <section class="content">
+    <ul class="questions">
+      <div class="question" id="user-box" >
+        <li>
+          <div class="attributes">
+            <ul>
+              <li><img src="<%= Faker::Avatar.image %>"></li>
+              <li> <%= question.votes.pluck("point_value").sum %> Votes</li>
+              <li> <%= question.answers.count %> Answers</li>
+              <li> <%= question.comments.count %> Comments</li>
+            </ul>
+        </div>
+        <div class="title-content">
+          <a href="/questions/<%=question.id%>"><%= question.title %></a>
+          <p>By: <%= question.user.username %></p>
+          <p><%= question.content %></p>
+        </div>
+        <div class="tags">
+          <ul>
+            <% question.tags.each do |tag| %>
+          <li><a href="/tags/<%= tag.id %>"><%= tag.name %></a></li>
+            <% end %>
+          </ul>
+        </div>
+      </li>
+    </div>
+  </ul>
+</section>
+</div>
 
         <h3 class="tag-list-header">Tags:</h3>
         <ul class="tags-list">
@@ -43,8 +67,8 @@
         <% question.comments.each do |comment| %>
         <%= erb :'partials/vote_form', locals: { object_id: comment.id, votable_type: "Comment", question_id: question.id } %>
         <section id="display_comments">
-          <p><%= comment.content %></p>
-          <p>Written by: <a href="/users/<%= comment.user_id %>"><%= comment.user.username %></a></p></section>
+          <p id="content"><%= comment.content %></p>
+          <p id="by">Written by: <a href="/users/<%= comment.user_id %>"><%= comment.user.username %></a></p></section>
             <% if current_user && current_user.id == comment.user_id %>
                 <form class = "delete" method="POST" action="/comments/<%=comment.id %>">
                 <input class = "delete"type="hidden" name="_method" value="delete">

@@ -5,7 +5,7 @@
     <input type="hidden" name="vote[user_id]" value="<%= current_user.id if current_user %>">
     <input type="hidden" name="question_id" value="<%= question_id %>">
     <input type="hidden" name="vote[point_value]" value="1">
-    <input type="submit" value="1" id="+1">
+    <input type="submit" value="" id="+1">
   </form>
 
   <form action="/votes/new" method="post" class="vote_buttons">
@@ -14,6 +14,6 @@
     <input type="hidden" name="vote[user_id]" value="<%= current_user.id if current_user %>">
     <input type="hidden" name="question_id" value="<%= question_id %>">
     <input type="hidden" name="vote[point_value]" value="-1">
-    <input type="submit" value="-1" id="-1">
+    <input type="submit" value="" id="-1">
   </form>
 </section>
